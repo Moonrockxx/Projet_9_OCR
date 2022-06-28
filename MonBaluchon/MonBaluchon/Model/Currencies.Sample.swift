@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Currencies {
-    let currency = [
-        "United States Doller",
-        "Euro",
-        "Yen",
-        "Pound sterling"
-    ]
-}
+
+let currency = [
+    "United States Dollar",
+    "Euro",
+    "Yen",
+    "Pound sterling"
+]
+

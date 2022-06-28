@@ -70,7 +70,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2cq-0b-zUy" userLabel="Currencies Select Stack View">
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="30"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AML-Ce-o1b">
+                                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AML-Ce-o1b">
                                                         <rect key="frame" x="0.0" y="0.0" width="165.5" height="30"/>
                                                         <color key="backgroundColor" red="0.22745098039215686" green="0.27843137254901962" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -90,7 +90,7 @@
                                                         <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaI-Qu-tAk">
+                                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oaI-Qu-tAk">
                                                         <rect key="frame" x="209" y="0.0" width="165" height="30"/>
                                                         <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -127,30 +127,24 @@
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Jc-RK-0DB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="264.5" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="318.5" height="34"/>
                                                         <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" returnKeyType="continue"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV6-Rs-TNV">
-                                                        <rect key="frame" x="274.5" y="0.0" width="45.5" height="34"/>
+                                                        <rect key="frame" x="328.5" y="0.0" width="45.5" height="34"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system">
-                                                            <attributedString key="attributedTitle"/>
                                                             <color key="baseBackgroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ej6-Jv-zbB">
-                                                        <rect key="frame" x="330" y="0.0" width="44" height="34"/>
-                                                        <buttonConfiguration key="configuration" style="filled" image="trash" catalog="system">
-                                                            <color key="baseForegroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="getConvertionResult:" destination="yk5-lq-ps9" eventType="touchUpInside" id="uKU-6T-Dmu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="Ej6-Jv-zbB" firstAttribute="bottom" secondItem="4Jc-RK-0DB" secondAttribute="bottom" id="WsA-LF-9Gu"/>
                                                     <constraint firstItem="bV6-Rs-TNV" firstAttribute="bottom" secondItem="4Jc-RK-0DB" secondAttribute="bottom" id="grI-uE-THg"/>
                                                 </constraints>
                                             </stackView>
@@ -197,6 +191,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IKg-B7-1rb"/>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.2196078431372549" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qLa-v9-cTQ" firstAttribute="leading" secondItem="IKg-B7-1rb" secondAttribute="leading" constant="20" id="CAe-QZ-DkV"/>
                             <constraint firstItem="IKg-B7-1rb" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="q2M-Xb-zpR" secondAttribute="trailing" constant="256" id="Iem-aw-5AH"/>
@@ -206,6 +201,9 @@
                             <constraint firstItem="q2M-Xb-zpR" firstAttribute="leading" secondItem="IKg-B7-1rb" secondAttribute="leading" constant="20" id="g9t-3W-kPp"/>
                             <constraint firstItem="Ujy-NC-pSV" firstAttribute="centerX" secondItem="IKg-B7-1rb" secondAttribute="centerX" id="oEX-Oc-QMa"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="nwB-Vn-aSy" appends="YES" id="VHr-nJ-Bez"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Exchange" image="Exchange" id="a2M-Lm-cwZ"/>
                     <connections>
@@ -217,6 +215,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIO-Eo-4gd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nwB-Vn-aSy">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="yk5-lq-ps9" id="RK2-zH-Emg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1452.1739130434785" y="902.67857142857133"/>
         </scene>
@@ -228,7 +231,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="yk5-lq-ps9" kind="relationship" relationship="viewControllers" id="o2Z-1S-WH9"/>
@@ -246,9 +249,5 @@
         <image name="Translate" width="25" height="25"/>
         <image name="Weather" width="25" height="25"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
