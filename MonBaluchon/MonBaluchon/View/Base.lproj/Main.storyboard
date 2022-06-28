@@ -12,7 +12,7 @@
         <!--Translation-->
         <scene sceneID="aHo-H8-eJg">
             <objects>
-                <viewController id="zY9-y0-LPA" sceneMemberID="viewController">
+                <viewController id="zY9-y0-LPA" customClass="TranslationHelperViewController" customModule="MonBaluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYl-vf-XRF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,6 +138,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" image="Translate" id="qt9-ng-Z4T"/>
+                    <connections>
+                        <outlet property="firstLanguagePicker" destination="ADe-Ar-Zwe" id="BwY-dl-aK1"/>
+                        <outlet property="secondLanguagePicker" destination="Szt-2k-VwV" id="DEf-Wv-h3r"/>
+                        <outlet property="textfieldForTranslate" destination="W9n-LJ-yVo" id="hlA-mu-Wcb"/>
+                        <outlet property="translatedTextfield" destination="zyT-SV-J3w" id="U9O-F1-fg4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8b-xV-Xlr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,6 +17,7 @@
 		60504E7F2863613400EABD02 /* MonBaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60504E7E2863613400EABD02 /* MonBaluchonUITestsLaunchTests.swift */; };
 		60504E8F2865A1CF00EABD02 /* Currencies.Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60504E8E2865A1CF00EABD02 /* Currencies.Sample.swift */; };
 		60504E912865BD3C00EABD02 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60504E902865BD3C00EABD02 /* ExchangeViewController.swift */; };
+		60FE7DC6286B537A002933E8 /* TranslationHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FE7DC5286B537A002933E8 /* TranslationHelperViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		60504E7E2863613400EABD02 /* MonBaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonBaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		60504E8E2865A1CF00EABD02 /* Currencies.Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.Sample.swift; sourceTree = "<group>"; };
 		60504E902865BD3C00EABD02 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		60FE7DC5286B537A002933E8 /* TranslationHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHelperViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				60504E902865BD3C00EABD02 /* ExchangeViewController.swift */,
+				60FE7DC5286B537A002933E8 /* TranslationHelperViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				60504E5C2863613300EABD02 /* AppDelegate.swift in Sources */,
 				60504E912865BD3C00EABD02 /* ExchangeViewController.swift in Sources */,
 				60504E5E2863613300EABD02 /* SceneDelegate.swift in Sources */,
+				60FE7DC6286B537A002933E8 /* TranslationHelperViewController.swift in Sources */,
 				60504E8F2865A1CF00EABD02 /* Currencies.Sample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
