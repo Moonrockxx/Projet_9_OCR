@@ -14,12 +14,17 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var secondCurrencyButton: UIButton!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var resultField: UIView!
+    
+    private var allElements: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setUpView()
+        
         self.getResultButton.titleLabel?.text = ""
         self.amountTextField.clearButtonMode = .always
-        
         
         firstCurrencyButton.menu = createFilteringMenu()
         secondCurrencyButton.menu = createFilteringMenu()
@@ -54,5 +59,19 @@ class ExchangeViewController: UIViewController {
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func groupAllElements() {
+        allElements.append(firstCurrencyButton)
+        allElements.append(secondCurrencyButton)
+        allElements.append(amountTextField)
+        allElements.append(resultField)
+    }
+    
+    private func setUpView() {
+        self.groupAllElements()
+        allElements.forEach { element in
+            setUpViewElements(element: element, borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
+        }
     }
 }
