@@ -17,6 +17,7 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var resultField: UIView!
     
     private var allElements: [UIView] = []
+    private var menuSymbols: [String: String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,16 @@ class ExchangeViewController: UIViewController {
         self.getResultButton.titleLabel?.text = ""
         self.amountTextField.clearButtonMode = .always
         
-        firstCurrencyButton.menu = createFilteringMenu()
-        secondCurrencyButton.menu = createFilteringMenu()
+        CurrenciesService.getSymbols { success, symbols in
+            guard let symbols = symbols else {
+//                self.presentAlert(with: "Fetch currencies failed")
+                return
+            }
+            self.menuSymbols = symbols.symbols
+        }
+        
+        self.firstCurrencyButton.menu = self.createFilteringMenu()
+        self.secondCurrencyButton.menu = self.createFilteringMenu()
     }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -36,7 +45,8 @@ class ExchangeViewController: UIViewController {
     
     @IBAction func getConvertionResult(_ sender: Any) {
         //TODO: Calculte change rate
-        self.presentAlert(with: "Calculation of exchange rate not implemented")
+//        self.presentAlert(with: "Calculation of exchange rate not implemented")
+        
     }
     
     private func createFilteringMenu() -> UIMenu {
@@ -46,9 +56,12 @@ class ExchangeViewController: UIViewController {
             print(action.title)
         }
         
-        currency.forEach{ value in
-            let item = UIAction(title: "\(value)", handler: optionsClosure)
+        print(menuSymbols.keys)
+        
+        for key in menuSymbols.keys {
+            let item = UIAction(title: "\(key)", handler: optionsClosure)
             menuActions.append(item)
+            print(key)
         }
         
         return UIMenu(title: "Select a currency", children: menuActions)
