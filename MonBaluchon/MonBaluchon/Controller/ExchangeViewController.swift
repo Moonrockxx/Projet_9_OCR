@@ -17,7 +17,7 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var resultField: UIView!
     
     private var allElements: [UIView] = []
-    private var menuSymbols: [String: String] = [:]
+    private var menuSymbols: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +27,22 @@ class ExchangeViewController: UIViewController {
         self.getResultButton.titleLabel?.text = ""
         self.amountTextField.clearButtonMode = .always
         
-        CurrenciesService.getSymbols { success, symbols in
+        CurrenciesService.getSymbols { [weak self] success, symbols in
             guard let symbols = symbols else {
 //                self.presentAlert(with: "Fetch currencies failed")
                 return
             }
-            self.menuSymbols = symbols.symbols
+            symbols.symbols.forEach { symbol in
+                self?.menuSymbols.append(String(describing: symbol.key))
+            }
+//            self?.menuSymbols = symbols.symbols
+            DispatchQueue.main.async {
+                self?.firstCurrencyButton.menu = self?.createFilteringMenu()
+                self?.secondCurrencyButton.menu = self?.createFilteringMenu()
+            }
         }
         
-        self.firstCurrencyButton.menu = self.createFilteringMenu()
-        self.secondCurrencyButton.menu = self.createFilteringMenu()
+        
     }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -56,9 +62,9 @@ class ExchangeViewController: UIViewController {
             print(action.title)
         }
         
-        print(menuSymbols.keys)
+//        print(menuSymbols.keys)
         
-        for key in menuSymbols.keys {
+        for key in menuSymbols.sorted(by: { $0 < $1 }) {
             let item = UIAction(title: "\(key)", handler: optionsClosure)
             menuActions.append(item)
             print(key)

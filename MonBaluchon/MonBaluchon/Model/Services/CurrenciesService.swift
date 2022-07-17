@@ -31,10 +31,8 @@ class CurrenciesService {
                 return
             }
             
-            
-//            for (key, value) in responseJSON.symbols {
-//                print(key + " = " + value )
-//            }
+            let symbols = Symbols(symbols: responseJSON.symbols)
+            callback(true, symbols)
         }
         task.resume()
     }
