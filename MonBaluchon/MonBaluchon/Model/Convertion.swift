@@ -8,5 +8,5 @@
 import Foundation
 
 struct Convertion: Decodable {
-    var convertionResult: Double
+    let result: Double
 }

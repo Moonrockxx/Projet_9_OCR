@@ -28,6 +28,7 @@ class ExchangeViewController: UIViewController {
         
         self.getResultButton.titleLabel?.text = ""
         self.amountTextField.clearButtonMode = .always
+        self.amountTextField.clearsOnBeginEditing = true
         
         CurrenciesService.getSymbols { [weak self] success, symbols in
             guard let symbols = symbols else {
@@ -37,14 +38,12 @@ class ExchangeViewController: UIViewController {
             symbols.symbols.forEach { symbol in
                 self?.menuSymbols.append(String(describing: symbol.key))
             }
-            //            self?.menuSymbols = symbols.symbols
+            
             DispatchQueue.main.async {
                 self?.firstCurrencyButton.menu = self?.createFilteringMenu()
                 self?.secondCurrencyButton.menu = self?.createFilteringMenu()
             }
         }
-        
-        
     }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -52,14 +51,13 @@ class ExchangeViewController: UIViewController {
     }
     
     @IBAction func getConvertionResult(_ sender: Any) {
-        //TODO: Calculte change rate
         if let first = firstCurrencyButton.currentTitle, let second = secondCurrencyButton.currentTitle, let amount = amountTextField.text {
-            CurrenciesService(self).convert(from: first, to: second, amount: amount) { [weak self] success, amountConverted in
+            CurrenciesService.convert(from: first, to: second, amount: amount) { [weak self] success, amountConverted in
                 guard let amount = amountConverted else {
                     return
                 }
                 DispatchQueue.main.async {
-                    self?.resultLabel.text = String(format: "%.2f", amount.convertionResult)
+                    self?.resultLabel.text = String(format: "%.2f", amount.result)
                 }
             }
         }
@@ -68,11 +66,8 @@ class ExchangeViewController: UIViewController {
     private func createFilteringMenu() -> UIMenu {
         var menuActions: [UIAction] = []
         let optionsClosure = { (action: UIAction) in
-            // TODO: Use this closure for change rate
             print(action.title)
         }
-        
-        //        print(menuSymbols.keys)
         
         for key in menuSymbols.sorted(by: { $0 < $1 }) {
             let item = UIAction(title: "\(key)", handler: optionsClosure)

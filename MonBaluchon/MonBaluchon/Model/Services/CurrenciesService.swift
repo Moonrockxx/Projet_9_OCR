@@ -7,15 +7,8 @@
 
 import Foundation
 
-class CurrenciesService: ConvertDelegate {
-    var exchangeVC: ExchangeViewController
-//    var convertedAmount: Convertion?
+class CurrenciesService {
     private static let symbolsUrl = URL(string: "https://api.apilayer.com/fixer/symbols?apikey=TeOLN3KvPxA1VOD4az4SXQLi7ac7RE71")!
-    
-    init(_ exchange: ExchangeViewController) {
-        self.exchangeVC = exchange
-        exchange.delegate = self
-    }
     
     static func getSymbols(callback: @escaping (Bool, Symbols?) -> Void) {
         var request = URLRequest(url: symbolsUrl)
@@ -44,9 +37,10 @@ class CurrenciesService: ConvertDelegate {
         task.resume()
     }
     
-    func convert(from: String, to: String, amount: String, callback: @escaping (Bool, Convertion?) -> Void) {
+    static func convert(from: String, to: String, amount: String, callback: @escaping (Bool, Convertion?) -> Void) {
         let url = "https://api.apilayer.com/fixer/convert?to=\(to)&from=\(from)&amount=\(amount)"
         var request = URLRequest(url: URL(string: url)!)
+        
         request.httpMethod = "GET"
         request.addValue("TeOLN3KvPxA1VOD4az4SXQLi7ac7RE71", forHTTPHeaderField: "apikey")
         
@@ -67,7 +61,7 @@ class CurrenciesService: ConvertDelegate {
                 return
             }
             
-            let convertedAmount = Convertion(convertionResult: responseJSON.convertionResult)
+            let convertedAmount = Convertion(result: responseJSON.result)
             callback(true, convertedAmount)
         }
         task.resume()
