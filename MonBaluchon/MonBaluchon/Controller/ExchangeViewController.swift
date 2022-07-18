@@ -8,7 +8,7 @@
 import UIKit
 
 class ExchangeViewController: UIViewController {
-
+    
     @IBOutlet weak var getResultButton: UIButton!
     @IBOutlet weak var firstCurrencyButton: UIButton!
     @IBOutlet weak var secondCurrencyButton: UIButton!
@@ -18,6 +18,8 @@ class ExchangeViewController: UIViewController {
     
     private var allElements: [UIView] = []
     private var menuSymbols: [String] = []
+    
+    var delegate: ConvertDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +31,13 @@ class ExchangeViewController: UIViewController {
         
         CurrenciesService.getSymbols { [weak self] success, symbols in
             guard let symbols = symbols else {
-//                self.presentAlert(with: "Fetch currencies failed")
+                //                self.presentAlert(with: "Fetch currencies failed")
                 return
             }
             symbols.symbols.forEach { symbol in
                 self?.menuSymbols.append(String(describing: symbol.key))
             }
-//            self?.menuSymbols = symbols.symbols
+            //            self?.menuSymbols = symbols.symbols
             DispatchQueue.main.async {
                 self?.firstCurrencyButton.menu = self?.createFilteringMenu()
                 self?.secondCurrencyButton.menu = self?.createFilteringMenu()
@@ -51,8 +53,16 @@ class ExchangeViewController: UIViewController {
     
     @IBAction func getConvertionResult(_ sender: Any) {
         //TODO: Calculte change rate
-//        self.presentAlert(with: "Calculation of exchange rate not implemented")
-        
+        if let first = firstCurrencyButton.currentTitle, let second = secondCurrencyButton.currentTitle, let amount = amountTextField.text {
+            CurrenciesService(self).convert(from: first, to: second, amount: amount) { [weak self] success, amountConverted in
+                guard let amount = amountConverted else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self?.resultLabel.text = String(format: "%.2f", amount.convertionResult)
+                }
+            }
+        }
     }
     
     private func createFilteringMenu() -> UIMenu {
@@ -62,7 +72,7 @@ class ExchangeViewController: UIViewController {
             print(action.title)
         }
         
-//        print(menuSymbols.keys)
+        //        print(menuSymbols.keys)
         
         for key in menuSymbols.sorted(by: { $0 < $1 }) {
             let item = UIAction(title: "\(key)", handler: optionsClosure)
