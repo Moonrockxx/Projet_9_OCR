@@ -19,8 +19,6 @@ class ExchangeViewController: UIViewController {
     private var allElements: [UIView] = []
     private var menuSymbols: [String] = []
     
-    var delegate: ConvertDelegate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,19 +28,16 @@ class ExchangeViewController: UIViewController {
         self.amountTextField.clearButtonMode = .always
         self.amountTextField.clearsOnBeginEditing = true
         
-        CurrenciesService.getSymbols { [weak self] success, symbols in
+        CurrenciesService.shared.getSymbols { [weak self] success, symbols in
             guard let symbols = symbols else {
-                //                self.presentAlert(with: "Fetch currencies failed")
                 return
             }
             symbols.symbols.forEach { symbol in
                 self?.menuSymbols.append(String(describing: symbol.key))
             }
             
-            DispatchQueue.main.async {
-                self?.firstCurrencyButton.menu = self?.createFilteringMenu()
-                self?.secondCurrencyButton.menu = self?.createFilteringMenu()
-            }
+            self?.firstCurrencyButton.menu = self?.createFilteringMenu()
+            self?.secondCurrencyButton.menu = self?.createFilteringMenu()
         }
     }
     
@@ -51,14 +46,15 @@ class ExchangeViewController: UIViewController {
     }
     
     @IBAction func getConvertionResult(_ sender: Any) {
+        amountTextField.resignFirstResponder()
+        getResultButton.isEnabled = false
         if let first = firstCurrencyButton.currentTitle, let second = secondCurrencyButton.currentTitle, let amount = amountTextField.text {
-            CurrenciesService.convert(from: first, to: second, amount: amount) { [weak self] success, amountConverted in
+            CurrenciesService.shared.convert(from: first, to: second, amount: amount) { [weak self] success, amountConverted in
+                self?.getResultButton.isEnabled = true
                 guard let amount = amountConverted else {
                     return
                 }
-                DispatchQueue.main.async {
-                    self?.resultLabel.text = String(format: "%.2f", amount.result)
-                }
+                self?.resultLabel.text = String(format: "%.2f", amount.result)
             }
         }
     }
