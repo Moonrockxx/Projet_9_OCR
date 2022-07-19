@@ -93,13 +93,12 @@
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9n-LJ-yVo">
+                                            <textView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your text to translate" translatesAutoresizingMaskIntoConstraints="NO" id="W9n-LJ-yVo">
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="150"/>
                                                 <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="bJz-ku-yuO"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
@@ -115,13 +114,12 @@
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-SV-J3w">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-SV-J3w">
                                                 <rect key="frame" x="0.0" y="30.5" width="374" height="150"/>
                                                 <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="Ouc-bN-NCx"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -130,17 +128,32 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfI-L1-UST">
+                                <rect key="frame" x="20" y="713" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="s3P-BL-MGM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Translate">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                                    <color key="baseForegroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xHV-ox-6OF"/>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.2196078431372549" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="cjv-yx-wyC" firstAttribute="centerX" secondItem="xHV-ox-6OF" secondAttribute="centerX" id="2Hd-2j-ooQ"/>
+                            <constraint firstItem="NfI-L1-UST" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="COL-Fl-gkf"/>
                             <constraint firstItem="wD6-gs-1kS" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="OXL-ec-4ji"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qex-kY-EJE" secondAttribute="trailing" constant="138" id="R2E-h6-wmu"/>
                             <constraint firstItem="qex-kY-EJE" firstAttribute="top" secondItem="xHV-ox-6OF" secondAttribute="top" constant="50" id="YDd-Xn-T4K"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="wD6-gs-1kS" secondAttribute="trailing" constant="20" id="avi-1H-q4K"/>
+                            <constraint firstItem="xHV-ox-6OF" firstAttribute="bottom" secondItem="NfI-L1-UST" secondAttribute="bottom" constant="50" id="hl5-5o-aMa"/>
                             <constraint firstItem="wD6-gs-1kS" firstAttribute="top" secondItem="qex-kY-EJE" secondAttribute="bottom" constant="50" id="mwy-cs-Wb6"/>
+                            <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="NfI-L1-UST" secondAttribute="trailing" constant="20" id="odj-PU-oN9"/>
                             <constraint firstItem="qex-kY-EJE" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="xCp-35-jGY"/>
                         </constraints>
                         <connections>
@@ -150,6 +163,7 @@
                     <tabBarItem key="tabBarItem" title="Translation" image="Translate" id="qt9-ng-Z4T"/>
                     <connections>
                         <outlet property="firstLanguagePicker" destination="ADe-Ar-Zwe" id="BwY-dl-aK1"/>
+                        <outlet property="getTranslationButton" destination="NfI-L1-UST" id="r9f-L9-4rV"/>
                         <outlet property="secondLanguagePicker" destination="Szt-2k-VwV" id="DEf-Wv-h3r"/>
                         <outlet property="textfieldForTranslate" destination="W9n-LJ-yVo" id="hlA-mu-Wcb"/>
                         <outlet property="translatedTextfield" destination="zyT-SV-J3w" id="U9O-F1-fg4"/>
