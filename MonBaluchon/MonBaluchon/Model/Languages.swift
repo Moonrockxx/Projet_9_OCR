@@ -8,5 +8,18 @@
 import Foundation
 
 struct Languages: Decodable {
-    var lang: [String : String]?
+    let data: DataLanguages
+}
+
+extension Languages {
+    struct DataLanguages: Decodable {
+        let languages: [LanguagesName]
+    }
+}
+
+extension Languages.DataLanguages {
+    struct LanguagesName: Decodable {
+        let language: String
+        let name: String
+    }
 }
