@@ -34,21 +34,51 @@ class LanguagesService {
                     return
                 }
                 
-//                guard let responseJSON = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as? [String: Any] else {
-//                    callback(false, nil)
-//                    return
-//                }
-                
                 guard let responseJSON = try? JSONDecoder().decode(Languages.self, from: data) else {
                     callback(false, nil)
                     return
                 }
                 
-                let lang = Languages(lang: responseJSON.lang)
+                let lang = Languages(data: responseJSON.data)
                 
-                print(lang.lang)
+                print(lang.data.languages)
                 callback(true, lang)
             }
+        }
+        task?.resume()
+    }
+    
+    func getTranslation(from: String, to: String, text: String, callback: @escaping (Bool, Translations?) -> Void) {
+        let url = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCPfvAhyclZQim1gqn-QhsVwvlHlL1ydsc&q=\(text)&target=\(to)&format=text&source=\(from)"
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        
+        let session = URLSession(configuration: .default)
+        
+        task?.cancel()
+        task = session.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    print("error data")
+                    callback(false, nil)
+                    return
+                }
+                print(String(data: data, encoding: .utf8) ?? "")
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("error response")
+                    callback(false, nil)
+                    return
+                }
+                print(response)
+                
+                do {
+                    let responseJSON = try JSONDecoder().decode(Translations.self, from: data)
+                    let translatedText = Translations(data: responseJSON.data)
+                    callback(true, translatedText)
+                } catch {
+                    print(error)
+                    callback(false, nil)
+                }
         }
         task?.resume()
     }
