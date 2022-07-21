@@ -17,7 +17,7 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     
     private var allElements: [UIView] = []
     private var menuLanguages: [String] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
@@ -28,12 +28,29 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                 return
             }
             
-            languages.lang?.forEach { key, value in
-                self?.menuLanguages.append(String(describing: value))
+            languages.data.languages.forEach { lang in
+                self?.menuLanguages.append("\(lang.language): \(lang.name)")
             }
             
             self?.firstLanguagePicker.menu = self?.createFilteringMenu()
             self?.secondLanguagePicker.menu = self?.createFilteringMenu()
+        }
+    }
+    
+    @IBAction func translateText(_ sender: Any) {
+        getTranslationButton.isEnabled = false
+        if let from = firstLanguagePicker.currentTitle?.prefix(2),
+           let to = secondLanguagePicker.currentTitle?.prefix(2),
+           let text = textfieldForTranslate.text {
+            LanguagesService.shared.getTranslation(from: String(from), to: String(to), text: text) { [weak self] success, translatedText in
+                DispatchQueue.main.async {
+                    self?.getTranslationButton.isEnabled = true
+                    guard let text = translatedText else {
+                        return
+                    }
+                    self?.translatedTextfield.text = text.data.translations.first?.translatedText
+                }
+            }
         }
     }
     
@@ -69,10 +86,11 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
             print(action.title)
         }
         
-        for key in menuLanguages {
-            let item = UIAction(title: "\(value(forKey: key) ?? "")", handler: optionsClosure)
-            menuActions.append(item)
-            print(value(forKey: key) ?? "")
+        for languageName in menuLanguages {
+            if languageName != "" {
+                let item = UIAction(title: languageName, handler: optionsClosure)
+                menuActions.append(item)
+            }
         }
         
         return UIMenu(title: "Select a currency", children: menuActions)
