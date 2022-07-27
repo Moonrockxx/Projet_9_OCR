@@ -9,6 +9,8 @@ import UIKit
 
 class ExchangeViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var containerView: UIStackView!
     @IBOutlet weak var getResultButton: UIButton!
     @IBOutlet weak var firstCurrencyButton: UIButton!
     @IBOutlet weak var secondCurrencyButton: UIButton!
@@ -33,11 +35,15 @@ class ExchangeViewController: UIViewController {
                 return
             }
             symbols.symbols.forEach { symbol in
-                self?.menuSymbols.append(String(describing: symbol.key))
+                self?.menuSymbols.append("\(symbol.key) : \(symbol.value)")
             }
             
-            self?.firstCurrencyButton.menu = self?.createFilteringMenu()
-            self?.secondCurrencyButton.menu = self?.createFilteringMenu()
+            DispatchQueue.main.async {
+                self?.firstCurrencyButton.menu = self?.createFilteringMenu()
+                self?.secondCurrencyButton.menu = self?.createFilteringMenu()
+                self?.activityIndicator.isHidden = true
+                self?.containerView.isHidden = false
+            }
         }
     }
     
@@ -48,13 +54,17 @@ class ExchangeViewController: UIViewController {
     @IBAction func getConvertionResult(_ sender: Any) {
         amountTextField.resignFirstResponder()
         getResultButton.isEnabled = false
-        if let first = firstCurrencyButton.currentTitle, let second = secondCurrencyButton.currentTitle, let amount = amountTextField.text {
-            CurrenciesService.shared.convert(from: first, to: second, amount: amount) { [weak self] success, amountConverted in
-                self?.getResultButton.isEnabled = true
-                guard let amount = amountConverted else {
-                    return
+        if let first = firstCurrencyButton.currentTitle?.prefix(3),
+           let second = secondCurrencyButton.currentTitle?.prefix(3),
+            let amount = amountTextField.text {
+            CurrenciesService.shared.convert(from: String(first), to: String(second), amount: amount) { [weak self] success, amountConverted in
+                DispatchQueue.main.async {
+                    self?.getResultButton.isEnabled = true
+                    guard let amount = amountConverted else {
+                        return
+                    }
+                    self?.resultLabel.text = String(format: "%.2f", amount.result)
                 }
-                self?.resultLabel.text = String(format: "%.2f", amount.result)
             }
         }
     }

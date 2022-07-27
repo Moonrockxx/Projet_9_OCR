@@ -9,6 +9,8 @@ import UIKit
 
 class TranslationHelperViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var containerView: UIStackView!
     @IBOutlet weak var firstLanguagePicker: UIButton!
     @IBOutlet weak var secondLanguagePicker: UIButton!
     @IBOutlet weak var textfieldForTranslate: UITextView!
@@ -32,8 +34,12 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                 self?.menuLanguages.append("\(lang.language): \(lang.name)")
             }
             
-            self?.firstLanguagePicker.menu = self?.createFilteringMenu()
-            self?.secondLanguagePicker.menu = self?.createFilteringMenu()
+            DispatchQueue.main.async {
+                self?.firstLanguagePicker.menu = self?.createFilteringMenu()
+                self?.secondLanguagePicker.menu = self?.createFilteringMenu()
+                self?.loader.isHidden = true
+                self?.containerView.isHidden = false
+            }
         }
     }
     
@@ -86,13 +92,13 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
             print(action.title)
         }
         
-        for languageName in menuLanguages {
+        for languageName in menuLanguages.sorted(by: { $0 < $1 }) {
             if languageName != "" {
                 let item = UIAction(title: languageName, handler: optionsClosure)
                 menuActions.append(item)
             }
         }
         
-        return UIMenu(title: "Select a currency", children: menuActions)
+        return UIMenu(title: "Select a language", children: menuActions)
     }
 }

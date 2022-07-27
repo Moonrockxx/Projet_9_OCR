@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TRANSLATION_API_KEY</key>
+	<string>AIzaSyCPfvAhyclZQim1gqn-QhsVwvlHlL1ydsc</string>
+	<key>CURRENCIES_API_KEY</key>
+	<string>TeOLN3KvPxA1VOD4az4SXQLi7ac7RE71</string>
+	<key>WEATHER_API_KEY</key>
+	<string>55bc3e40789f1e3ed9c5753a6e11dc76</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
