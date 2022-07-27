@@ -22,25 +22,23 @@ class CurrenciesService {
         let session = URLSession(configuration: .default)
         task?.cancel()
         task = session.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    callback(false, nil)
-                    return
-                }
-                
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(false, nil)
-                    return
-                }
-                
-                guard let responseJSON = try? JSONDecoder().decode(Symbols.self, from: data) else {
-                    callback(false, nil)
-                    return
-                }
-                
-                let symbols = Symbols(symbols: responseJSON.symbols)
-                callback(true, symbols)
+            guard let data = data, error == nil else {
+                callback(false, nil)
+                return
             }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                callback(false, nil)
+                return
+            }
+            
+            guard let responseJSON = try? JSONDecoder().decode(Symbols.self, from: data) else {
+                callback(false, nil)
+                return
+            }
+            
+            let symbols = Symbols(symbols: responseJSON.symbols)
+            callback(true, symbols)
         }
         task?.resume()
     }
@@ -56,26 +54,39 @@ class CurrenciesService {
         
         task?.cancel()
         task = session.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    callback(false, nil)
-                    return
-                }
-                
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(false, nil)
-                    return
-                }
-                
-                guard let responseJSON = try? JSONDecoder().decode(Convertion.self, from: data) else {
-                    callback(false, nil)
-                    return
-                }
-                
-                let convertedAmount = Convertion(result: responseJSON.result)
-                callback(true, convertedAmount)
+            guard let data = data, error == nil else {
+                callback(false, nil)
+                return
             }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                callback(false, nil)
+                return
+            }
+            
+            guard let responseJSON = try? JSONDecoder().decode(Convertion.self, from: data) else {
+                callback(false, nil)
+                return
+            }
+            
+            let convertedAmount = Convertion(result: responseJSON.result)
+            callback(true, convertedAmount)
         }
         task?.resume()
+    }
+    
+    private func buildGetSymbolsURL() -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.apilayer.com"
+        components.path = "/fixer/symbols"
+        components.queryItems = [
+            URLQueryItem(name: "key", value: Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as? String)
+        ]
+        
+        guard let url = components.url else {
+            return URL(string: "")!
+        }
+        return url
     }
 }
