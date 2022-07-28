@@ -9,15 +9,16 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
-    @IBOutlet weak var yourCityPicker: UIButton!
-    @IBOutlet weak var travelDestinationPicker: UIButton!
-    @IBOutlet weak var displayWeatherStackView: UIStackView!
-    @IBOutlet weak var yourCityName: UILabel!
-    @IBOutlet weak var yourCityWeather: UIImageView!
-    @IBOutlet weak var yourCityTemperature: UILabel!
-    @IBOutlet weak var travelCityName: UILabel!
-    @IBOutlet weak var travelCityWeather: UIImageView!
-    @IBOutlet weak var travelCityTemperature: UILabel!
+    @IBOutlet weak var yourCityTextField: UITextField!
+    @IBOutlet weak var travelCityTextField: UITextField!
+    
+    @IBOutlet weak var yourCityResultStackView: UIStackView!
+    @IBOutlet weak var yourCityWeatherLabel: UILabel!
+    @IBOutlet weak var yourCityTemperatureLabel: UILabel!
+    
+    @IBOutlet weak var travelDestinationResultStackView: UIStackView!
+    @IBOutlet weak var travelDestinationWeatherLabel: UILabel!
+    @IBOutlet weak var travelDestinationTempLabel: UILabel!
     
     private var allElements: [UIView] = []
     
@@ -26,15 +27,45 @@ class WeatherViewController: UIViewController {
         self.setUpView()
     }
     
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        yourCityTextField.resignFirstResponder()
+        travelCityTextField.resignFirstResponder()
+    }
+    
     @IBAction func getWeather(_ sender: UIButton) {
-        // TODO: Call to api
-        // TODO: Animation
-        self.displayWeatherStackView.isHidden = false
+        if let city = yourCityTextField.text {
+            self.weatherForPart(city: city, part: yourCityResultStackView, weatherLabel: yourCityWeatherLabel, tempLabel: yourCityTemperatureLabel)
+
+        }
+        if let cityTravel = travelCityTextField.text {
+            self.weatherForPart(city: cityTravel, part: travelDestinationResultStackView, weatherLabel: travelDestinationWeatherLabel, tempLabel: travelDestinationTempLabel)
+        }
+    }
+    
+    private func weatherForPart(city: String, part: UIStackView, weatherLabel: UILabel, tempLabel: UILabel) {
+        WeatherService.shared.getCoordinates(city: city) { success, coordinates in
+            if let long = coordinates?.lon,
+               let lat = coordinates?.lat {
+                WeatherService.shared.getWeather(lat: lat, lon: long) { success, weather in
+                    DispatchQueue.main.async {
+                        part.isHidden = false
+                        weatherLabel.text = weather?.weather.description
+                        if let temp = weather?.main.temp {
+                            tempLabel.text = String(format: "%.1f", self.toCelsius(temp))
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func toCelsius(_ fah: Double) -> Double {
+        let convertion = 5.0 / 9.0 * (fah - 32.0)
+        return convertion.rounded()
     }
     
     private func groupAllElements() {
-        allElements.append(yourCityPicker)
-        allElements.append(travelDestinationPicker)
+        allElements.append(contentsOf: [yourCityTextField, travelCityTextField])
     }
     
     private func setUpView() {
