@@ -7,11 +7,6 @@
 
 import Foundation
 class WeatherService {
-    static var shared = WeatherService()
-    private init() {}
-    
-    private var task: URLSessionDataTask?
-    
     func getWeather(city: String, callback: @escaping (Bool, Weathers?) -> Void) {
         let url = self.buildGetWeatherUrl(city: city)
         var request = URLRequest(url: url)
@@ -19,8 +14,7 @@ class WeatherService {
         
         let session = URLSession(configuration: .default)
         
-        task?.cancel()
-        task = session.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Weather get coordinate : error data for \(city)")
                 callback(false, nil)
@@ -43,7 +37,8 @@ class WeatherService {
                 callback(false, nil)
             }
         }
-        task?.resume()
+        
+        task.resume()
     }
     
     private func buildGetWeatherUrl(city: String) -> URL {
