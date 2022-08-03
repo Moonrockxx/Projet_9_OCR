@@ -84,12 +84,7 @@ class ExchangeViewController: UIViewController {
         return UIMenu(title: "Select a currency", children: menuActions)
     }
     
-    private func presentAlert(with error: String) {
-        let alert: UIAlertController = UIAlertController(title: "Erreur", message: error, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+    
     
     private func groupAllElements() {
         allElements.append(firstCurrencyButton)

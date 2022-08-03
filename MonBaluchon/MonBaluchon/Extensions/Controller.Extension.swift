@@ -14,4 +14,11 @@ extension UIViewController {
         element.layer.borderColor = borderColor
         element.layer.cornerRadius = cornerRadius
     }
+    
+    public func presentAlert(with error: String) {
+        let alert: UIAlertController = UIAlertController(title: "Erreur", message: error, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
