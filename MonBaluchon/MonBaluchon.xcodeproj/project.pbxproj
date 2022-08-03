@@ -24,7 +24,6 @@
 		60504E912865BD3C00EABD02 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60504E902865BD3C00EABD02 /* ExchangeViewController.swift */; };
 		60742FD528918AED00C99A7E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60742FD428918AED00C99A7E /* WeatherService.swift */; };
 		60742FD72891903300C99A7E /* Weathers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60742FD62891903300C99A7E /* Weathers.swift */; };
-		60742FD92891936D00C99A7E /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60742FD82891936D00C99A7E /* Coordinates.swift */; };
 		608973D42887055400758C31 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608973D32887055400758C31 /* Languages.swift */; };
 		608973D62887069300758C31 /* LanguagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608973D52887069300758C31 /* LanguagesService.swift */; };
 		60CF4E122881BA3B001059ED /* CurrenciesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CF4E112881BA3B001059ED /* CurrenciesService.swift */; };
@@ -71,7 +70,6 @@
 		60504E902865BD3C00EABD02 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		60742FD428918AED00C99A7E /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		60742FD62891903300C99A7E /* Weathers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weathers.swift; sourceTree = "<group>"; };
-		60742FD82891936D00C99A7E /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		608973D32887055400758C31 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		608973D52887069300758C31 /* LanguagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesService.swift; sourceTree = "<group>"; };
 		60CF4E112881BA3B001059ED /* CurrenciesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesService.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				608973D32887055400758C31 /* Languages.swift */,
 				6024097928885091006BDB78 /* Translations.swift */,
 				60742FD62891903300C99A7E /* Weathers.swift */,
-				60742FD82891936D00C99A7E /* Coordinates.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,7 +341,6 @@
 				60504E5C2863613300EABD02 /* AppDelegate.swift in Sources */,
 				60504E912865BD3C00EABD02 /* ExchangeViewController.swift in Sources */,
 				608973D62887069300758C31 /* LanguagesService.swift in Sources */,
-				60742FD92891936D00C99A7E /* Coordinates.swift in Sources */,
 				602167DD286B5C0C00D5ED3F /* Controller.Extension.swift in Sources */,
 				60504E5E2863613300EABD02 /* SceneDelegate.swift in Sources */,
 				608973D42887055400758C31 /* Languages.swift in Sources */,
