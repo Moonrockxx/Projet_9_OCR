@@ -13,27 +13,27 @@ class CurrenciesService {
     
     private var task: URLSessionDataTask?
     
-    func getSymbols(callback: @escaping (Bool, Symbols?) -> Void) {
+    func getSymbols(callback: @escaping (Result<Symbols, APIErrors>) -> Void) {
         let url = self.buildGetSymbolsURL()
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as! String, forHTTPHeaderField: "apikey")
-
+        
         
         let session = URLSession(configuration: .default)
         task?.cancel()
         task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Get Symbols : error data")
-                callback(false, nil)
+                callback(.failure(.badURL))
                 return
             }
             print("Get Symbols : \(String(data: data, encoding: .utf8) ?? "")")
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Get Symbols : error response")
-                callback(false, nil)
+                callback(.failure(.badResquest))
                 return
             }
             print(response)
@@ -41,20 +41,21 @@ class CurrenciesService {
             do {
                 let responseJSON = try JSONDecoder().decode(Symbols.self, from: data)
                 let symbols = Symbols(symbols: responseJSON.symbols)
-                callback(true, symbols)
+                callback(.success(symbols))
             } catch {
                 print("Get Symbols : \(error)")
-                callback(false, nil)
+                callback(.failure(.dataParsing))
             }
         }
         task?.resume()
     }
     
-    func convert(from: String, to: String, amount: String, callback: @escaping (Bool, Convertion?) -> Void) {
+    func convert(from: String, to: String, amount: String, callback: @escaping (Result<Convertion, APIErrors>) -> Void) {
         let url = self.buildConvertionURL(from: from, to: to, amount: amount)
         var request = URLRequest(url: url)
         
         request.httpMethod = "GET"
+        request.addValue(Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as! String, forHTTPHeaderField: "apikey")
         
         let session = URLSession(configuration: .default)
         
@@ -62,14 +63,14 @@ class CurrenciesService {
         task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Currencies Convertion : error data")
-                callback(false, nil)
+                callback(.failure(.badURL))
                 return
             }
             print(String(data: data, encoding: .utf8) ?? "")
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Currencies Convertion : error response")
-                callback(false, nil)
+                callback(.failure(.badResquest))
                 return
             }
             print(response)
@@ -77,10 +78,10 @@ class CurrenciesService {
             do {
                 let responseJSON = try JSONDecoder().decode(Convertion.self, from: data)
                 let convertedAmount = Convertion(result: responseJSON.result)
-                callback(true, convertedAmount)
+                callback(.success(convertedAmount))
             } catch {
                 print("Currencies Convertion : \(error)")
-                callback(false, nil)
+                callback(.failure(.dataParsing))
             }
         }
         task?.resume()
@@ -91,9 +92,6 @@ class CurrenciesService {
         components.scheme = "https"
         components.host = "api.apilayer.com"
         components.path = "/fixer/symbols"
-//        components.queryItems = [
-//            URLQueryItem(name: "key", value: Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as? String)
-//        ]
         
         guard let url = components.url else {
             return URL(string: "")!

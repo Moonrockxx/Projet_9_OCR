@@ -7,7 +7,7 @@
 
 import Foundation
 class WeatherService {
-    func getWeather(city: String, callback: @escaping (Bool, Weathers?) -> Void) {
+    func getWeather(city: String, callback: @escaping (Result<Weathers, APIErrors>) -> Void) {
         let url = self.buildGetWeatherUrl(city: city)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -17,24 +17,24 @@ class WeatherService {
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Weather get coordinate : error data for \(city)")
-                callback(false, nil)
+                callback(.failure(.badURL))
                 return
             }
             print(String(data: data, encoding: .utf8) ?? "")
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Weather get coordinate : error response")
-                callback(false, nil)
+                callback(.failure(.badResquest))
                 return
             }
             print(response)
             
             do {
                 let weather = try JSONDecoder().decode(Weathers.self, from: data)
-                callback(true, weather)
+                callback(.success(weather))
             } catch {
                 print("Weather get coordinate : \(error)")
-                callback(false, nil)
+                callback(.failure(.dataParsing))
             }
         }
         

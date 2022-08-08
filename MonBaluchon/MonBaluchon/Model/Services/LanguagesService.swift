@@ -13,7 +13,7 @@ class LanguagesService {
     
     private var task: URLSessionDataTask?
     
-    func getLanguages(callback: @escaping (Bool, Languages?) -> Void) {
+    func getLanguages(callback: @escaping (Result<Languages, APIErrors>) -> Void) {
         let url = self.buildgetLanguagesURL()
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -23,29 +23,32 @@ class LanguagesService {
         task?.cancel()
         task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
-                callback(false, nil)
+                callback(.failure(.badURL))
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                callback(false, nil)
+                callback(.failure(.badResquest))
                 return
             }
             
             guard let responseJSON = try? JSONDecoder().decode(Languages.self, from: data) else {
-                callback(false, nil)
+                callback(.failure(.dataParsing))
                 return
             }
             
-            let lang = Languages(data: responseJSON.data)
-            
-            print(lang.data.languages)
-            callback(true, lang)
+            do {
+                let lang = try JSONDecoder().decode(Languages.self, from: data)
+                callback(.success(lang))
+            } catch {
+                print("Get languages : \(error)")
+                callback(.failure(.dataParsing))
+            }
         }
         task?.resume()
     }
     
-    func getTranslation(from: String, to: String, text: String, callback: @escaping (Bool, Translations?) -> Void) {
+    func getTranslation(from: String, to: String, text: String, callback: @escaping (Result<Translations, APIErrors>) -> Void) {
         let url = self.buildTranslationURL(from: from, to: to, text: text)
         
         var request = URLRequest(url: url)
@@ -57,13 +60,13 @@ class LanguagesService {
         task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error data")
-                callback(false, nil)
+                callback(.failure(.badURL))
                 return
             }
             print(String(data: data, encoding: .utf8) ?? "")
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("error response")
-                callback(false, nil)
+                callback(.failure(.badResquest))
                 return
             }
             print(response)
@@ -71,10 +74,10 @@ class LanguagesService {
             do {
                 let responseJSON = try JSONDecoder().decode(Translations.self, from: data)
                 let translatedText = Translations(data: responseJSON.data)
-                callback(true, translatedText)
+                callback(.success(translatedText))
             } catch {
                 print(error)
-                callback(false, nil)
+                callback(.failure(.dataParsing))
             }
         }
         task?.resume()
