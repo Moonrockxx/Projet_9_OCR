@@ -36,24 +36,32 @@ class WeatherViewController: UIViewController {
     
     @IBAction func getWeather(_ sender: UIButton) {
         if let yourCity = yourCityTextField.text {
-            self.weatherService?.getWeather(city: yourCity) { [weak self] success, weather in
-                DispatchQueue.main.async {
-                    if let temp = weather?.main.temp {
-                        self?.yourCityTemperatureLabel.text = "\(self?.toCelsius(temp) ?? 0)°C"
+            self.weatherService?.getWeather(city: yourCity) { [weak self] result in
+                switch result {
+                case .success(let weather):
+                    DispatchQueue.main.async {
+                        self?.yourCityTemperatureLabel.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                        self?.yourCityWeatherLabel.text = weather.weather.first?.weatherDescription.capitalized
+                        self?.yourCityResultStackView.isHidden = false
                     }
-                    self?.yourCityWeatherLabel.text = weather?.weather.first?.weatherDescription.capitalized
-                    self?.yourCityResultStackView.isHidden = false
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.presentAlert(with: error.description)
+                    }
                 }
             }
         }
         if let travelCity = travelCityTextField.text {
-            self.weatherService?.getWeather(city: travelCity) { [weak self] success, weather in
-                DispatchQueue.main.async {
-                    if let temp = weather?.main.temp {
-                        self?.travelDestinationTempLabel.text = "\(self?.toCelsius(temp) ?? 0)°C"
+            self.weatherService?.getWeather(city: travelCity) { [weak self] result in
+                switch result {
+                case .success(let weather):
+                    DispatchQueue.main.async {
+                        self?.travelDestinationTempLabel.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                        self?.travelDestinationWeatherLabel.text = weather.weather.first?.weatherDescription.capitalized
+                        self?.travelDestinationResultStackView.isHidden = false
                     }
-                    self?.travelDestinationWeatherLabel.text = weather?.weather.first?.weatherDescription.capitalized
-                    self?.travelDestinationResultStackView.isHidden = false
+                case .failure(let error):
+                    self?.presentAlert(with: error.description)
                 }
             }
         }

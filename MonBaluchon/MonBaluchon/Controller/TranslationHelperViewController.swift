@@ -8,7 +8,7 @@
 import UIKit
 
 class TranslationHelperViewController: UIViewController, UITextViewDelegate {
-
+    
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var containerView: UIStackView!
     @IBOutlet weak var firstLanguagePicker: UIButton!
@@ -19,26 +19,27 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     
     private var allElements: [UIView] = []
     private var menuLanguages: [String] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
         textfieldForTranslate.delegate = self
         
-        LanguagesService.shared.getLanguages { [weak self] success, languages in
-            guard let languages = languages else {
-                return
-            }
-            
-            languages.data.languages.forEach { lang in
-                self?.menuLanguages.append("\(lang.language): \(lang.name)")
-            }
-            
-            DispatchQueue.main.async {
-                self?.firstLanguagePicker.menu = self?.createFilteringMenu()
-                self?.secondLanguagePicker.menu = self?.createFilteringMenu()
-                self?.loader.isHidden = true
-                self?.containerView.isHidden = false
+        LanguagesService.shared.getLanguages { [weak self] result in
+            switch result {
+            case .success(let languages):
+                languages.data.languages.forEach { lang in
+                    self?.menuLanguages.append("\(lang.language): \(lang.name)")
+                }
+                
+                DispatchQueue.main.async {
+                    self?.firstLanguagePicker.menu = self?.createFilteringMenu()
+                    self?.secondLanguagePicker.menu = self?.createFilteringMenu()
+                    self?.loader.isHidden = true
+                    self?.containerView.isHidden = false
+                }
+            case .failure(let error):
+                self?.presentAlert(with: error.description)
             }
         }
     }
@@ -48,13 +49,15 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
         if let from = firstLanguagePicker.currentTitle?.prefix(2),
            let to = secondLanguagePicker.currentTitle?.prefix(2),
            let text = textfieldForTranslate.text {
-            LanguagesService.shared.getTranslation(from: String(from), to: String(to), text: text) { [weak self] success, translatedText in
-                DispatchQueue.main.async {
-                    self?.getTranslationButton.isEnabled = true
-                    guard let text = translatedText else {
-                        return
+            LanguagesService.shared.getTranslation(from: String(from), to: String(to), text: text) { [weak self] result in
+                switch result {
+                case .success(let text):
+                    DispatchQueue.main.async {
+                        self?.getTranslationButton.isEnabled = true
+                        self?.translatedTextfield.text = text.data.translations.first?.translatedText
                     }
-                    self?.translatedTextfield.text = text.data.translations.first?.translatedText
+                case .failure(let error):
+                    self?.presentAlert(with: error.description)
                 }
             }
         }
