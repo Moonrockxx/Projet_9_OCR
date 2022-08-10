@@ -32,11 +32,6 @@ class LanguagesService {
                 return
             }
             
-            guard let responseJSON = try? JSONDecoder().decode(Languages.self, from: data) else {
-                callback(.failure(.dataParsing))
-                return
-            }
-            
             do {
                 let lang = try JSONDecoder().decode(Languages.self, from: data)
                 callback(.success(lang))

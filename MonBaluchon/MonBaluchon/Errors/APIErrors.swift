@@ -17,7 +17,7 @@ public enum APIErrors: Error {
         case .badURL:
             return "Bad URL used to perform this action"
         case .badResquest:
-            return "Bad request to perform this action"
+            return "The city cannot be found"
         case .dataParsing:
             return "Can't fetch datas"
         }
