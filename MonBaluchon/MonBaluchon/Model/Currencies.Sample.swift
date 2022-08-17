@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 let currency = [
     "United States Dollar",
     "Euro",
@@ -40,7 +39,8 @@ let currency = [
     "United States Dollar",
     "Euro",
     "Yen",
-    "Pound sterling","United States Dollar",
+    "Pound sterling",
+    "United States Dollar",
     "Euro",
     "Yen",
     "Pound sterling",
@@ -49,4 +49,3 @@ let currency = [
     "Yen",
     "Pound sterling"
 ]
-

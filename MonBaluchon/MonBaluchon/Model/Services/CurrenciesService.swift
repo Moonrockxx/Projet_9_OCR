@@ -18,8 +18,10 @@ class CurrenciesService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as! String, forHTTPHeaderField: "apikey")
-        
+        guard let apiKey = Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as? String else {
+            return
+        }
+        request.addValue(apiKey, forHTTPHeaderField: "apikey")
         
         let session = URLSession(configuration: .default)
         task?.cancel()
@@ -55,7 +57,10 @@ class CurrenciesService {
         var request = URLRequest(url: url)
         
         request.httpMethod = "GET"
-        request.addValue(Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as! String, forHTTPHeaderField: "apikey")
+        guard let apiKey = Bundle.main.infoDictionary?["CURRENCIES_API_KEY"] as? String else {
+            return
+        }
+        request.addValue(apiKey, forHTTPHeaderField: "apikey")
         
         let session = URLSession(configuration: .default)
         

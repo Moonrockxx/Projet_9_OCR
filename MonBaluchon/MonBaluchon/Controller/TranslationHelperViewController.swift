@@ -73,7 +73,7 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textfieldForTranslate.resignFirstResponder()
-        return true;
+        return true
     }
     
     private func groupAllElements() {
@@ -101,11 +101,11 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
             print(action.title)
         }
         
-        for languageName in menuLanguages.sorted(by: { $0 < $1 }) {
-            if languageName != "" {
+        for languageName in menuLanguages.sorted(by: { $0 < $1 }) where languageName != "" {
+//            if languageName != "" {
                 let item = UIAction(title: languageName, handler: optionsClosure)
                 menuActions.append(item)
-            }
+//            }
         }
         
         return UIMenu(title: "Select a language", children: menuActions)
