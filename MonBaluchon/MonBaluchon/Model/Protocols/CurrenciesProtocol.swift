@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ConvertDelegate {
+protocol ConvertDelegate: class {
     func convert(from: String, to: String, amount: String, callback: @escaping (Bool, Convertion?) -> Void)
 }
