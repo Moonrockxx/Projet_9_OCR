@@ -90,7 +90,7 @@ class ExchangeViewController: UIViewController {
     private func setUpView() {
         self.groupAllElements()
         allElements.forEach { element in
-            setUpViewElements(element: element, borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
+            element.setUpStyle(borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
         }
         
         self.amountTextField.clearButtonMode = .always

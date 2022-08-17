@@ -86,7 +86,7 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     private func setUpView() {
         self.groupAllElements()
         allElements.forEach { element in
-            setUpViewElements(element: element, borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
+            element.setUpStyle(borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
         }
         
         textfieldForTranslate.contentInset.left = 8
@@ -102,10 +102,8 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
         }
         
         for languageName in menuLanguages.sorted(by: { $0 < $1 }) where languageName != "" {
-//            if languageName != "" {
-                let item = UIAction(title: languageName, handler: optionsClosure)
-                menuActions.append(item)
-//            }
+            let item = UIAction(title: languageName, handler: optionsClosure)
+            menuActions.append(item)
         }
         
         return UIMenu(title: "Select a language", children: menuActions)

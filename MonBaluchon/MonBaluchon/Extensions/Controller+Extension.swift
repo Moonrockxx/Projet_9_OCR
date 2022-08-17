@@ -9,12 +9,6 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    public func setUpViewElements(element: UIView, borderWidth: CGFloat, borderColor: CGColor, cornerRadius: CGFloat) {
-        element.layer.borderWidth = borderWidth
-        element.layer.borderColor = borderColor
-        element.layer.cornerRadius = cornerRadius
-    }
-    
     public func presentAlert(with error: String) {
         let alert: UIAlertController = UIAlertController(title: "Erreur", message: error, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
