@@ -23,27 +23,22 @@ class ExchangeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setUpView()
         
-        self.getResultButton.titleLabel?.text = ""
-        self.amountTextField.clearButtonMode = .always
-        self.amountTextField.clearsOnBeginEditing = true
-        
-        CurrenciesService.shared.getSymbols { [weak self] result in
-            switch result {
-            case .success(let symbols):
-                symbols.symbols.forEach { symbol in
-                    self?.menuSymbols.append("\(symbol.key) : \(symbol.value)")
-                }
-                DispatchQueue.main.async {
-                    self?.firstCurrencyButton.menu = self?.createFilteringMenu()
-                    self?.secondCurrencyButton.menu = self?.createFilteringMenu()
-                    self?.activityIndicator.isHidden = true
-                    self?.containerView.isHidden = false
-                }
-            case .failure(let error):
-                self?.presentAlert(with: error.description)
+        CurrenciesService.shared.getSymbols { [weak self] success, symbols in
+            guard let symbols = symbols else {
+                return
+            }
+            
+            symbols.symbols.forEach { symbol in
+                self?.menuSymbols.append("\(symbol.key) : \(symbol.value)")
+            }
+            
+            DispatchQueue.main.async {
+                self?.firstCurrencyButton.menu = self?.createFilteringMenu()
+                self?.secondCurrencyButton.menu = self?.createFilteringMenu()
+                self?.activityIndicator.isHidden = true
+                self?.containerView.isHidden = false
             }
         }
     }
@@ -57,20 +52,15 @@ class ExchangeViewController: UIViewController {
         getResultButton.isEnabled = false
         if let first = firstCurrencyButton.currentTitle?.prefix(3),
            let second = secondCurrencyButton.currentTitle?.prefix(3),
-           let amount = amountTextField.text {
-            CurrenciesService.shared.convert(from: String(first), to: String(second), amount: amount) { [weak self] result in
-                switch result {
-                case .success(let amountConverted):
-                    DispatchQueue.main.async {
-                        self?.getResultButton.isEnabled = true
-                        self?.resultLabel.text = String(format: "%.2f", amountConverted.result)
+           let amt = amountTextField.text {
+            CurrenciesService.shared.convert(from: String(first), to: String(second), amount: amt) { [weak self] success, amountConverted in
+                DispatchQueue.main.async {
+                    self?.getResultButton.isEnabled = true
+                    guard let amount = amountConverted else {
+                        return
                     }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.presentAlert(with: error.description)
-                    }
+                    self?.resultLabel.text = String(format: "%.2f", amount.result)
                 }
-                
             }
         }
     }
@@ -90,8 +80,6 @@ class ExchangeViewController: UIViewController {
         return UIMenu(title: "Select a currency", children: menuActions)
     }
     
-    
-    
     private func groupAllElements() {
         allElements.append(firstCurrencyButton)
         allElements.append(secondCurrencyButton)
@@ -104,5 +92,11 @@ class ExchangeViewController: UIViewController {
         allElements.forEach { element in
             setUpViewElements(element: element, borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
         }
+        
+        self.amountTextField.clearButtonMode = .always
+        self.amountTextField.clearsOnBeginEditing = true
+        self.amountTextField.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        
+        self.getResultButton.titleLabel?.text = ""
     }
 }

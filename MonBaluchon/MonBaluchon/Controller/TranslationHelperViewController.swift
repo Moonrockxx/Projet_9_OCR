@@ -22,25 +22,26 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpView()
         textfieldForTranslate.delegate = self
         
-        LanguagesService.shared.getLanguages { [weak self] result in
-            switch result {
-            case .success(let languages):
-                languages.data.languages.forEach { lang in
-                    self?.menuLanguages.append("\(lang.language): \(lang.name)")
-                }
-                
-                DispatchQueue.main.async {
-                    self?.firstLanguagePicker.menu = self?.createFilteringMenu()
-                    self?.secondLanguagePicker.menu = self?.createFilteringMenu()
-                    self?.loader.isHidden = true
-                    self?.containerView.isHidden = false
-                }
-            case .failure(let error):
-                self?.presentAlert(with: error.description)
+        self.setUpView()
+        
+        LanguagesService.shared.getLanguages { [weak self] success, languages in
+            guard let languages = languages else {
+                return
             }
+            
+            languages.data.languages.forEach { lang in
+                self?.menuLanguages.append("\(lang.language): \(lang.name)")
+            }
+            
+            DispatchQueue.main.async {
+                self?.firstLanguagePicker.menu = self?.createFilteringMenu()
+                self?.secondLanguagePicker.menu = self?.createFilteringMenu()
+                self?.loader.isHidden = true
+                self?.containerView.isHidden = false
+            }
+            
         }
     }
     
@@ -48,16 +49,15 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
         getTranslationButton.isEnabled = false
         if let from = firstLanguagePicker.currentTitle?.prefix(2),
            let to = secondLanguagePicker.currentTitle?.prefix(2),
-           let text = textfieldForTranslate.text {
-            LanguagesService.shared.getTranslation(from: String(from), to: String(to), text: text) { [weak self] result in
-                switch result {
-                case .success(let text):
-                    DispatchQueue.main.async {
-                        self?.getTranslationButton.isEnabled = true
-                        self?.translatedTextfield.text = text.data.translations.first?.translatedText
-                    }
-                case .failure(let error):
-                    self?.presentAlert(with: error.description)
+           let txt = textfieldForTranslate.text {
+            LanguagesService.shared.getTranslation(from: String(from), to: String(to), text: txt) { [weak self] success, translatedText in
+                guard let text = translatedText else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self?.getTranslationButton.isEnabled = true
+                    self?.translatedTextfield.text = text.data.translations.first?.translatedText
                 }
             }
         }
@@ -65,11 +65,15 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         textfieldForTranslate.resignFirstResponder()
-        translatedTextfield.resignFirstResponder()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textfieldForTranslate.text = String()
+    }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textfieldForTranslate.resignFirstResponder()
+        return true;
     }
     
     private func groupAllElements() {
@@ -87,6 +91,8 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
         
         textfieldForTranslate.contentInset.left = 8
         translatedTextfield.contentInset.left = 8
+        
+        self.textfieldForTranslate.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
     }
     
     private func createFilteringMenu() -> UIMenu {

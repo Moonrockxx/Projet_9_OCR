@@ -50,40 +50,37 @@ class WeatherViewController: UIViewController {
         self.travelDestinationWeatherResultLoader.isHidden = false
         
         if let yourCity = yourCityTextField.text {
-            self.weatherService.getWeather(city: yourCity) { [weak self] result in
-                switch result {
-                case .success(let weather):
+            self.weatherService.getWeather(city: yourCity) { [weak self] success, weather in
+                if success {
                     DispatchQueue.main.async {
-                        self?.yourCityWeatherResultLoader.isHidden = true
-                        self?.yourCityWeatherResultButtonStackView.isHidden = false
-                        self?.yourCityWeatherResultName.titleLabel?.text = self?.yourCityTextField.text
-                        self?.yourCityWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
-                        self?.yourCityWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                        if let weather = weather {
+                            self?.yourCityWeatherResultLoader.isHidden = true
+                            self?.yourCityWeatherResultButtonStackView.isHidden = false
+                            self?.yourCityWeatherResultName.titleLabel?.text = self?.yourCityTextField.text
+                            self?.yourCityWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                            self?.yourCityWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                        }
                     }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.yourCityWeatherResultStackView.isHidden = true
-                        self?.presentAlert(with: "Your city : \(error.description)")
-                    }
+                } else {
+                    self?.hideAllResults()
                 }
+                
             }
         }
         if let travelCity = travelCityTextField.text {
-            self.weatherService.getWeather(city: travelCity) { [weak self] result in
-                switch result {
-                case .success(let weather):
+            self.weatherService.getWeather(city: travelCity) { [weak self] success, weather in
+                if success {
                     DispatchQueue.main.async {
-                        self?.travelDestinationWeatherResultLoader.isHidden = true
-                        self?.travelDestinationWeatherResultButtonStackView.isHidden = false
-                        self?.travelDestinationWeatherResultName.titleLabel?.text = self?.travelCityTextField.text
-                        self?.travelDestinationWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
-                        self?.travelDestinationWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                        if let weather = weather {
+                            self?.travelDestinationWeatherResultLoader.isHidden = true
+                            self?.travelDestinationWeatherResultButtonStackView.isHidden = false
+                            self?.travelDestinationWeatherResultName.titleLabel?.text = self?.travelCityTextField.text
+                            self?.travelDestinationWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                            self?.travelDestinationWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                        }
                     }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.hideAllResults()
-                        self?.presentAlert(with: "Your travel destination : \(error.description)")
-                    }
+                } else {
+                    self?.hideAllResults()
                 }
             }
         }
@@ -103,6 +100,8 @@ class WeatherViewController: UIViewController {
         allElements.forEach { element in
             setUpViewElements(element: element, borderWidth: 1, borderColor: CGColor.appText, cornerRadius: 5)
         }
+        self.yourCityTextField.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        self.travelCityTextField.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
     }
     
     private func hideAllResults() {

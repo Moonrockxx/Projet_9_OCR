@@ -13,7 +13,7 @@ class CurrenciesService {
     
     private var task: URLSessionDataTask?
     
-    func getSymbols(callback: @escaping (Result<Symbols, APIErrors>) -> Void) {
+    func getSymbols(callback: @escaping (Bool, Symbols?) -> Void) {
         let url = self.buildGetSymbolsURL()
         
         var request = URLRequest(url: url)
@@ -26,14 +26,14 @@ class CurrenciesService {
         task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Get Symbols : error data")
-                callback(.failure(.badURL))
+                callback(false, nil)
                 return
             }
             print("Get Symbols : \(String(data: data, encoding: .utf8) ?? "")")
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Get Symbols : error response")
-                callback(.failure(.badResquest))
+                callback(false, nil)
                 return
             }
             print(response)
@@ -41,16 +41,16 @@ class CurrenciesService {
             do {
                 let responseJSON = try JSONDecoder().decode(Symbols.self, from: data)
                 let symbols = Symbols(symbols: responseJSON.symbols)
-                callback(.success(symbols))
+                callback(true, symbols)
             } catch {
                 print("Get Symbols : \(error)")
-                callback(.failure(.dataParsing))
+                callback(false, nil)
             }
         }
         task?.resume()
     }
     
-    func convert(from: String, to: String, amount: String, callback: @escaping (Result<Convertion, APIErrors>) -> Void) {
+    func convert(from: String, to: String, amount: String, callback: @escaping (Bool, Convertion?) -> Void) {
         let url = self.buildConvertionURL(from: from, to: to, amount: amount)
         var request = URLRequest(url: url)
         
@@ -63,14 +63,14 @@ class CurrenciesService {
         task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Currencies Convertion : error data")
-                callback(.failure(.badURL))
+                callback(false, nil)
                 return
             }
             print(String(data: data, encoding: .utf8) ?? "")
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Currencies Convertion : error response")
-                callback(.failure(.badResquest))
+                callback(false, nil)
                 return
             }
             print(response)
@@ -78,10 +78,10 @@ class CurrenciesService {
             do {
                 let responseJSON = try JSONDecoder().decode(Convertion.self, from: data)
                 let convertedAmount = Convertion(result: responseJSON.result)
-                callback(.success(convertedAmount))
+                callback(true, convertedAmount)
             } catch {
                 print("Currencies Convertion : \(error)")
-                callback(.failure(.dataParsing))
+                callback(false, nil)
             }
         }
         task?.resume()

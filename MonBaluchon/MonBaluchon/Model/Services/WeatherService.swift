@@ -7,34 +7,43 @@
 
 import Foundation
 class WeatherService {
-    func getWeather(city: String, callback: @escaping (Result<Weathers, APIErrors>) -> Void) {
+    
+    private var weatherSession = URLSession(configuration: .default)
+    
+    init() {}
+    
+    init(weatherSession: URLSession?) {
+        if let session = weatherSession {
+            self.weatherSession = session
+        }
+    }
+    
+    func getWeather(city: String, callback: @escaping (Bool, Weathers?) -> Void) {
         let url = self.buildGetWeatherUrl(city: city)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: request) { data, response, error in
+        let task = weatherSession.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Weather get coordinate : error data for \(city)")
-                callback(.failure(.badURL))
+                callback(false, nil)
                 return
             }
             print(String(data: data, encoding: .utf8) ?? "")
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Weather get coordinate : error response")
-                callback(.failure(.badResquest))
+                callback(false, nil)
                 return
             }
             print(response)
             
             do {
                 let weather = try JSONDecoder().decode(Weathers.self, from: data)
-                callback(.success(weather))
+                callback(true, weather)
             } catch {
                 print("Weather get coordinate : \(error)")
-                callback(.failure(.dataParsing))
+                callback(false, nil)
             }
         }
         
