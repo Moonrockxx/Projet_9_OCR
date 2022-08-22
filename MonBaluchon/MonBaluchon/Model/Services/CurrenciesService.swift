@@ -12,6 +12,13 @@ class CurrenciesService {
     private init() {}
     
     private var task: URLSessionDataTask?
+    private var currenciesSession = URLSession(configuration: .default)
+    
+    init(currenciesSession: URLSession?) {
+        if let session = currenciesSession {
+            self.currenciesSession = session
+        }
+    }
     
     func getSymbols(callback: @escaping (Bool, Symbols?) -> Void) {
         let url = self.buildGetSymbolsURL()
@@ -23,9 +30,9 @@ class CurrenciesService {
         }
         request.addValue(apiKey, forHTTPHeaderField: "apikey")
         
-        let session = URLSession(configuration: .default)
+//        let session = URLSession(configuration: .default)
         task?.cancel()
-        task = session.dataTask(with: request) { data, response, error in
+        task = currenciesSession.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Get Symbols : error data")
                 callback(false, nil)
@@ -62,10 +69,10 @@ class CurrenciesService {
         }
         request.addValue(apiKey, forHTTPHeaderField: "apikey")
         
-        let session = URLSession(configuration: .default)
+//        let session = URLSession(configuration: .default)
         
         task?.cancel()
-        task = session.dataTask(with: request) { data, response, error in
+        task = currenciesSession.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("Currencies Convertion : error data")
                 callback(false, nil)

@@ -1,0 +1,14 @@
+{
+    "success": true,
+    "query": {
+        "from": "AED",
+        "to": "BAM",
+        "amount": 5
+    },
+    "info": {
+        "timestamp": 1660810683,
+        "rate": 0.522655
+    },
+    "date": "2022-08-18",
+    "result": 2.613275
+}
