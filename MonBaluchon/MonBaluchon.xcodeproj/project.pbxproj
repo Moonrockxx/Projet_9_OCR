@@ -36,6 +36,10 @@
 		60A48ABA28AE2D6A004A3BD7 /* Convertion.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A48AB928AE2D6A004A3BD7 /* Convertion.json */; };
 		60A48ABC28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A48ABB28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift */; };
 		60A48ABE28AE2DF5004A3BD7 /* FakeConvertionResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A48ABD28AE2DF5004A3BD7 /* FakeConvertionResponseData.swift */; };
+		60BF389128B4B54A00E1A734 /* Languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 60BF389028B4B54A00E1A734 /* Languages.json */; };
+		60BF389328B4B5FC00E1A734 /* Translations.json in Resources */ = {isa = PBXBuildFile; fileRef = 60BF389228B4B5FC00E1A734 /* Translations.json */; };
+		60BF389528B4B65C00E1A734 /* FakeLanguagesResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BF389428B4B65C00E1A734 /* FakeLanguagesResponseData.swift */; };
+		60BF389728B4B6C500E1A734 /* FakeTranslationsResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BF389628B4B6C500E1A734 /* FakeTranslationsResponseData.swift */; };
 		60CF4E122881BA3B001059ED /* CurrenciesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CF4E112881BA3B001059ED /* CurrenciesService.swift */; };
 		60CF4E142881BE9F001059ED /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CF4E132881BE9F001059ED /* Symbols.swift */; };
 		60FE7DC6286B537A002933E8 /* TranslationHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FE7DC5286B537A002933E8 /* TranslationHelperViewController.swift */; };
@@ -92,6 +96,10 @@
 		60A48AB928AE2D6A004A3BD7 /* Convertion.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Convertion.json; sourceTree = "<group>"; };
 		60A48ABB28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSymbolsResponseData.swift; sourceTree = "<group>"; };
 		60A48ABD28AE2DF5004A3BD7 /* FakeConvertionResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeConvertionResponseData.swift; sourceTree = "<group>"; };
+		60BF389028B4B54A00E1A734 /* Languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Languages.json; sourceTree = "<group>"; };
+		60BF389228B4B5FC00E1A734 /* Translations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translations.json; sourceTree = "<group>"; };
+		60BF389428B4B65C00E1A734 /* FakeLanguagesResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLanguagesResponseData.swift; sourceTree = "<group>"; };
+		60BF389628B4B6C500E1A734 /* FakeTranslationsResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTranslationsResponseData.swift; sourceTree = "<group>"; };
 		60CF4E112881BA3B001059ED /* CurrenciesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesService.swift; sourceTree = "<group>"; };
 		60CF4E132881BE9F001059ED /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		60FE7DC5286B537A002933E8 /* TranslationHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHelperViewController.swift; sourceTree = "<group>"; };
@@ -172,14 +180,13 @@
 		60504E712863613400EABD02 /* MonBaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
+				60BF389C28B4C1A400E1A734 /* Languages */,
+				60BF389B28B4C19200E1A734 /* Convertion */,
+				60BF389A28B4C18100E1A734 /* Translations */,
+				60BF389928B4C17300E1A734 /* Symbols */,
+				60BF389828B4C14400E1A734 /* Weathers */,
 				60504E722863613400EABD02 /* MonBaluchonTests.swift */,
-				605D042028A3F49B0072177B /* Weathers.json */,
-				605D042228A3F4EF0072177B /* FakeWeatherResponseData.swift */,
 				605D042428A3F9800072177B /* URLSessionFake.swift */,
-				60A48AB728AE2CE1004A3BD7 /* Symbols.json */,
-				60A48AB928AE2D6A004A3BD7 /* Convertion.json */,
-				60A48ABB28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift */,
-				60A48ABD28AE2DF5004A3BD7 /* FakeConvertionResponseData.swift */,
 			);
 			path = MonBaluchonTests;
 			sourceTree = "<group>";
@@ -232,6 +239,51 @@
 				6057BB0228A0F38900E0020F /* APIErrors.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		60BF389828B4C14400E1A734 /* Weathers */ = {
+			isa = PBXGroup;
+			children = (
+				605D042028A3F49B0072177B /* Weathers.json */,
+				605D042228A3F4EF0072177B /* FakeWeatherResponseData.swift */,
+			);
+			path = Weathers;
+			sourceTree = "<group>";
+		};
+		60BF389928B4C17300E1A734 /* Symbols */ = {
+			isa = PBXGroup;
+			children = (
+				60A48AB728AE2CE1004A3BD7 /* Symbols.json */,
+				60A48ABB28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift */,
+			);
+			path = Symbols;
+			sourceTree = "<group>";
+		};
+		60BF389A28B4C18100E1A734 /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				60BF389228B4B5FC00E1A734 /* Translations.json */,
+				60BF389628B4B6C500E1A734 /* FakeTranslationsResponseData.swift */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
+		60BF389B28B4C19200E1A734 /* Convertion */ = {
+			isa = PBXGroup;
+			children = (
+				60A48ABD28AE2DF5004A3BD7 /* FakeConvertionResponseData.swift */,
+				60A48AB928AE2D6A004A3BD7 /* Convertion.json */,
+			);
+			path = Convertion;
+			sourceTree = "<group>";
+		};
+		60BF389C28B4C1A400E1A734 /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+				60BF389028B4B54A00E1A734 /* Languages.json */,
+				60BF389428B4B65C00E1A734 /* FakeLanguagesResponseData.swift */,
+			);
+			path = Languages;
 			sourceTree = "<group>";
 		};
 		60CF4E102881BA25001059ED /* Services */ = {
@@ -359,6 +411,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				605D042128A3F49B0072177B /* Weathers.json in Resources */,
+				60BF389328B4B5FC00E1A734 /* Translations.json in Resources */,
+				60BF389128B4B54A00E1A734 /* Languages.json in Resources */,
 				60A48ABA28AE2D6A004A3BD7 /* Convertion.json in Resources */,
 				60A48AB828AE2CE1004A3BD7 /* Symbols.json in Resources */,
 			);
@@ -425,8 +479,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				605D042328A3F4EF0072177B /* FakeWeatherResponseData.swift in Sources */,
+				60BF389728B4B6C500E1A734 /* FakeTranslationsResponseData.swift in Sources */,
 				60A48ABC28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift in Sources */,
 				605D042528A3F9800072177B /* URLSessionFake.swift in Sources */,
+				60BF389528B4B65C00E1A734 /* FakeLanguagesResponseData.swift in Sources */,
 				60A48ABE28AE2DF5004A3BD7 /* FakeConvertionResponseData.swift in Sources */,
 				60504E732863613400EABD02 /* MonBaluchonTests.swift in Sources */,
 			);

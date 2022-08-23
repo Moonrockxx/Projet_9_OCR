@@ -12,16 +12,21 @@ class LanguagesService {
     private init() {}
     
     private var task: URLSessionDataTask?
+    private var languagesSession = URLSession(configuration: .default)
+    
+    init(languagesSession: URLSession?) {
+        if let session = languagesSession {
+            self.languagesSession = session
+        }
+    }
     
     func getLanguages(callback: @escaping (Bool, Languages?) -> Void) {
-        let url = self.buildgetLanguagesURL()
+        let url = self.buildGetLanguagesURL()
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let session = URLSession(configuration: .default)
-        
         task?.cancel()
-        task = session.dataTask(with: request) { data, response, error in
+        task = languagesSession.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 callback(false, nil)
                 return
@@ -49,10 +54,8 @@ class LanguagesService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let session = URLSession(configuration: .default)
-        
         task?.cancel()
-        task = session.dataTask(with: request) { data, response, error in
+        task = languagesSession.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error data")
                 callback(false, nil)
@@ -78,7 +81,7 @@ class LanguagesService {
         task?.resume()
     }
     
-    private func buildgetLanguagesURL() -> URL {
+    private func buildGetLanguagesURL() -> URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "translation.googleapis.com"

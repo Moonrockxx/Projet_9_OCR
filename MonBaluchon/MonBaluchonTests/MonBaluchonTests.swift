@@ -10,7 +10,7 @@ import XCTest
 
 class MonBaluchonTests: XCTestCase {
     // MARK: WeatherService
-    // Erreur
+    // API Call return an error
     func testGetWeatherShouldPostFailedCallbackIfError() {
         let weatherService = WeatherService(weatherSession: URLSessionFake(data: nil, response: nil, error: FakeWheatherResponseData.error))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -22,7 +22,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Pas de data
+    // API Call return no datas
     func testGetWeatherShouldPostFailedCallbackIfNoData() {
         let weatherService = WeatherService(weatherSession: URLSessionFake(data: nil, response: nil, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -34,7 +34,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données correcte, réponse incorrecte
+    // API Call return correct datas with incorrect response
     func testGetWeatherShouldPostFailedCallbackIfIncorrectResponse() {
         let weatherService = WeatherService(weatherSession: URLSessionFake(data: FakeWheatherResponseData.weatherCorrectData, response: FakeWheatherResponseData.responseKO, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -46,7 +46,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données incorrecte, réponse correcte
+    // API Call return incorrect datas with correct response
     func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
         let weatherService = WeatherService(weatherSession: URLSessionFake(data: FakeWheatherResponseData.weatherIncorrectData, response: FakeWheatherResponseData.responseOk, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -58,7 +58,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données correcte, réponse correcte
+    // API Call return correct datas AND correct response
     func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         let weatherService = WeatherService(weatherSession: URLSessionFake(data: FakeWheatherResponseData.weatherCorrectData, response: FakeWheatherResponseData.responseOk, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -75,9 +75,8 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // MARK: CurrenciesService
-    // Symbols
-    // Erreur
+    // MARK: CurrenciesService - Symbols
+    // API Call return an error
     func testGetSymbolsShouldPostFailedCallbackIfError() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: nil, response: nil, error: FakeSymbolsResponseData.error))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -89,7 +88,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Pas de data
+    // API Call return no datas
     func testGetSymbolsShouldPostFailedCallbackIfNoData() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: nil, response: nil, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -101,7 +100,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données correcte, réponse incorrecte
+    // API Call return correct datas with incorrect response
     func testGetSymbolsShouldPostFailedCallbackIfIncorrectResponse() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: FakeSymbolsResponseData.symbolsCorrectData, response: FakeSymbolsResponseData.responseKO, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -113,7 +112,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données incorrecte, réponse correcte
+    // API Call return incorrect datas with correct response
     func testGetSymbolsShouldPostFailedCallbackIfIncorrectData() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: FakeSymbolsResponseData.symbolsIncorrectData, response: FakeSymbolsResponseData.responseOk, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -125,7 +124,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données correcte, réponse correcte
+    // API Call return correct datas AND correct response
     func testGetSymbolsShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: FakeSymbolsResponseData.symbolsCorrectData, response: FakeSymbolsResponseData.responseOk, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -143,8 +142,8 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Convertion
-    // Erreur
+    // MARK: CurrenciesService - Convertion
+    // API Call return an error
     func testGetConvertionShouldPostFailedCallbackIfError() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: nil, response: nil, error: FakeConvertionResponseData.error))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -156,7 +155,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Pas de data
+    // API Call return no datas
     func testGetConvertionShouldPostFailedCallbackIfNoData() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: nil, response: nil, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -168,7 +167,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données correcte, réponse incorrecte
+    // API Call return correct datas with incorrect response
     func testGetConvertionShouldPostFailedCallbackIfIncorrectResponse() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: FakeConvertionResponseData.convertionCorrectData, response: FakeConvertionResponseData.responseKO, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -180,7 +179,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données incorrecte, réponse correcte
+    // API Call return incorrect datas with correct response
     func testGetConvertionShouldPostFailedCallbackIfIncorrectData() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: FakeConvertionResponseData.convertionIncorrectData, response: FakeConvertionResponseData.responseOk, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -192,7 +191,7 @@ class MonBaluchonTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // Données correcte, réponse correcte
+    // API Call return correct datas AND correct response
     func testGetConvertionShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         let currenciesService = CurrenciesService(currenciesSession: URLSessionFake(data: FakeConvertionResponseData.convertionCorrectData, response: FakeConvertionResponseData.responseOk, error: nil))
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -206,5 +205,136 @@ class MonBaluchonTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
-    // MARK: LanguagesService
+    
+    // MARK: LanguagesService - Languages
+    // API Call return an error
+    func testGetLanguagesShouldPostFailedCallbackIfError() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: nil, response: nil, error: FakeConvertionResponseData.error))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getLanguages { success, languages in
+            XCTAssertFalse(success)
+            XCTAssertNil(languages)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return no datas
+    func testGetLanguagesShouldPostFailedCallbackIfNoData() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: nil, response: nil, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getLanguages { success, languages in
+            XCTAssertFalse(success)
+            XCTAssertNil(languages)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return correct datas with incorrect response
+    func testGetLanguagesShouldPostFailedCallbackIfIncorrectResponse() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: FakeLanguagesResponseData.languagesCorrectData, response: FakeLanguagesResponseData.responseKO, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getLanguages { success, languages in
+            XCTAssertFalse(success)
+            XCTAssertNil(languages)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return incorrect datas with correct response
+    func testGetLanguagesShouldPostFailedCallbackIfIncorrectData() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: FakeLanguagesResponseData.languagesIncorrectData, response: FakeLanguagesResponseData.responseOk, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getLanguages { success, languages in
+            XCTAssertFalse(success)
+            XCTAssertNil(languages)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return correct datas AND correct response
+    func testGetLanguagesShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: FakeLanguagesResponseData.languagesCorrectData, response: FakeLanguagesResponseData.responseOk, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getLanguages { success, languages in
+            let langKey = "af"
+            let langName = "Afrikaans"
+            let key = (languages?.data.languages.filter { $0.name == "Afrikaans" })?.first?.language
+            let name = (languages?.data.languages.filter { $0.language == "af" })?.first?.name
+            
+            XCTAssertTrue(success)
+            XCTAssertNotNil(languages)
+            XCTAssertEqual(key, langKey)
+            XCTAssertEqual(name, langName)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // MARK: LanguagesService - Translations
+    // API Call return an error
+    func testGetTranslationsShouldPostFailedCallbackIfError() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: nil, response: nil, error: FakeTranslationsResponseData.error))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getTranslation(from: "en", to: "fr", text: "Hello, my name is Thomas") { success, translation in
+            XCTAssertFalse(success)
+            XCTAssertNil(translation)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return no datas
+    func testGetTranslationsShouldPostFailedCallbackIfNoData() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: nil, response: nil, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getTranslation(from: "en", to: "fr", text: "Hello, my name is Thomas") { success, translation in
+            XCTAssertFalse(success)
+            XCTAssertNil(translation)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return correct datas with incorrect response
+    func testGetTranslationsShouldPostFailedCallbackIfIncorrectResponse() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: FakeTranslationsResponseData.translationsCorrectData, response: FakeTranslationsResponseData.responseKO, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getTranslation(from: "en", to: "fr", text: "Hello, my name is Thomas") { success, translation in
+            XCTAssertFalse(success)
+            XCTAssertNil(translation)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return incorrect datas with correct response
+    func testGetTranslationsShouldPostFailedCallbackIfIncorrectData() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: FakeTranslationsResponseData.translationsIncorrectData, response: FakeTranslationsResponseData.responseOk, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getTranslation(from: "en", to: "fr", text: "Hello, my name is Thomas") { success, translation in
+            XCTAssertFalse(success)
+            XCTAssertNil(translation)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    // API Call return correct datas AND correct response
+    func testGetTranslationsShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
+        let languagesService = LanguagesService(languagesSession: URLSessionFake(data: FakeTranslationsResponseData.translationsCorrectData, response: FakeTranslationsResponseData.responseOk, error: nil))
+        let expectation = XCTestExpectation(description: "Wait for queue change")
+        languagesService.getTranslation(from: "en", to: "fr", text: "Hello, my name is Thomas") { success, translation in
+            XCTAssertTrue(success)
+            XCTAssertNotNil(translation)
+            
+            let textTranslated = "Bonjour, mon nom est Thomas"
+            XCTAssertEqual(textTranslated, translation?.data.translations.first?.translatedText)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
 }
