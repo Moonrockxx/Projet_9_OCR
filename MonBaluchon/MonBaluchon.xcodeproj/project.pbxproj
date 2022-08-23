@@ -32,6 +32,9 @@
 		60742FD72891903300C99A7E /* Weathers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60742FD62891903300C99A7E /* Weathers.swift */; };
 		608973D42887055400758C31 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608973D32887055400758C31 /* Languages.swift */; };
 		608973D62887069300758C31 /* LanguagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608973D52887069300758C31 /* LanguagesService.swift */; };
+		60A18B6A28B5351B00B06B63 /* TranslationsErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A18B6928B5351B00B06B63 /* TranslationsErrors.swift */; };
+		60A18B6C28B5365300B06B63 /* WeathersErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A18B6B28B5365300B06B63 /* WeathersErrors.swift */; };
+		60A18B6E28B5369D00B06B63 /* ExchangeErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A18B6D28B5369D00B06B63 /* ExchangeErrors.swift */; };
 		60A48AB828AE2CE1004A3BD7 /* Symbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A48AB728AE2CE1004A3BD7 /* Symbols.json */; };
 		60A48ABA28AE2D6A004A3BD7 /* Convertion.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A48AB928AE2D6A004A3BD7 /* Convertion.json */; };
 		60A48ABC28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A48ABB28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift */; };
@@ -92,6 +95,9 @@
 		60742FD62891903300C99A7E /* Weathers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weathers.swift; sourceTree = "<group>"; };
 		608973D32887055400758C31 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		608973D52887069300758C31 /* LanguagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesService.swift; sourceTree = "<group>"; };
+		60A18B6928B5351B00B06B63 /* TranslationsErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsErrors.swift; sourceTree = "<group>"; };
+		60A18B6B28B5365300B06B63 /* WeathersErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeathersErrors.swift; sourceTree = "<group>"; };
+		60A18B6D28B5369D00B06B63 /* ExchangeErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeErrors.swift; sourceTree = "<group>"; };
 		60A48AB728AE2CE1004A3BD7 /* Symbols.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Symbols.json; sourceTree = "<group>"; };
 		60A48AB928AE2D6A004A3BD7 /* Convertion.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Convertion.json; sourceTree = "<group>"; };
 		60A48ABB28AE2DA0004A3BD7 /* FakeSymbolsResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSymbolsResponseData.swift; sourceTree = "<group>"; };
@@ -237,6 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				6057BB0228A0F38900E0020F /* APIErrors.swift */,
+				60A18B6928B5351B00B06B63 /* TranslationsErrors.swift */,
+				60A18B6B28B5365300B06B63 /* WeathersErrors.swift */,
+				60A18B6D28B5369D00B06B63 /* ExchangeErrors.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 				6057BB0328A0F38900E0020F /* APIErrors.swift in Sources */,
 				602167DD286B5C0C00D5ED3F /* Controller+Extension.swift in Sources */,
 				60504E5E2863613300EABD02 /* SceneDelegate.swift in Sources */,
+				60A18B6C28B5365300B06B63 /* WeathersErrors.swift in Sources */,
 				608973D42887055400758C31 /* Languages.swift in Sources */,
 				60CF4E142881BE9F001059ED /* Symbols.swift in Sources */,
 				6071E9AA28ACE56400B94B46 /* UITextField+Extension.swift in Sources */,
@@ -468,8 +478,10 @@
 				60742FD528918AED00C99A7E /* WeatherService.swift in Sources */,
 				60742FD72891903300C99A7E /* Weathers.swift in Sources */,
 				6024097A28885091006BDB78 /* Translations.swift in Sources */,
+				60A18B6E28B5369D00B06B63 /* ExchangeErrors.swift in Sources */,
 				604E02DC288586DE0016E6F6 /* Convertion.swift in Sources */,
 				6071E9A828ACE3B900B94B46 /* UITextView+Extension.swift in Sources */,
+				60A18B6A28B5351B00B06B63 /* TranslationsErrors.swift in Sources */,
 				60CF4E122881BA3B001059ED /* CurrenciesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

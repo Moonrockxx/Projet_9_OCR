@@ -41,7 +41,6 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                 self?.loader.isHidden = true
                 self?.containerView.isHidden = false
             }
-            
         }
     }
     
