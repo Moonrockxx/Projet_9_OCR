@@ -18,13 +18,16 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var yourCityWeatherResultName: UIButton!
     @IBOutlet weak var yourCityWeatherResultWeather: UIButton!
     @IBOutlet weak var yourCityWeatherResultTemp: UIButton!
+    @IBOutlet weak var yourCityResultTemp: UITextField!
+    @IBOutlet weak var yourCityResultName: UITextField!
+    @IBOutlet weak var yourCityResultWeather: UITextField!
     
     @IBOutlet weak var travelDestinationWeatherResultStackView: UIStackView!
     @IBOutlet weak var travelDestinationWeatherResultLoader: UIActivityIndicatorView!
     @IBOutlet weak var travelDestinationWeatherResultButtonStackView: UIStackView!
-    @IBOutlet weak var travelDestinationWeatherResultName: UIButton!
-    @IBOutlet weak var travelDestinationWeatherResultWeather: UIButton!
-    @IBOutlet weak var travelDestinationWeatherResultTemp: UIButton!
+    @IBOutlet weak var travelDestinationResultName: UITextField!
+    @IBOutlet weak var travelDestinationResultWeather: UITextField!
+    @IBOutlet weak var travelDestinationResultTemp: UITextField!
     
     private var allElements: [UIView] = []
     
@@ -61,9 +64,9 @@ class WeatherViewController: UIViewController {
                             if let weather = weather {
                                 self?.yourCityWeatherResultLoader.isHidden = true
                                 self?.yourCityWeatherResultButtonStackView.isHidden = false
-                                self?.yourCityWeatherResultName.titleLabel?.text = self?.yourCityTextField.text
-                                self?.yourCityWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
-                                self?.yourCityWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                                self?.yourCityResultName.text = self?.yourCityTextField.text
+                                self?.yourCityResultTemp.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                                self?.yourCityResultWeather.text = weather.weather.first?.weatherDescription.capitalized
                             }
                         }
                     } else {
@@ -79,9 +82,9 @@ class WeatherViewController: UIViewController {
                             if let weather = weather {
                                 self?.travelDestinationWeatherResultLoader.isHidden = true
                                 self?.travelDestinationWeatherResultButtonStackView.isHidden = false
-                                self?.travelDestinationWeatherResultName.titleLabel?.text = self?.travelCityTextField.text
-                                self?.travelDestinationWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
-                                self?.travelDestinationWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                                self?.travelDestinationResultName.text = self?.travelCityTextField.text
+                                self?.travelDestinationResultTemp.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                                self?.travelDestinationResultWeather.text = weather.weather.first?.weatherDescription.capitalized
                             }
                         }
                     } else {

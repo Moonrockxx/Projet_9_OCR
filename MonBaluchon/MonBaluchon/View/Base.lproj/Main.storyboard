@@ -295,78 +295,72 @@
                                     <action selector="getWeather:" destination="gJ1-Fm-GKA" eventType="touchUpInside" id="oTx-1o-p9c"/>
                                 </connections>
                             </button>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-Ey-Q9r" userLabel="Your City Weather Result StackView">
-                                <rect key="frame" x="20" y="404" width="374" height="0.0"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-Ey-Q9r" userLabel="Your City Weather Result StackView">
+                                <rect key="frame" x="20" y="404" width="374" height="34"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TLV-wa-fWd" userLabel="Your City Weather Result Activity Indicator">
-                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-eC-08u" userLabel="Your City Weather Result Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-eC-08u" userLabel="Your City Weather Result Button Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biz-fr-DXw" userLabel="City">
-                                                <rect key="frame" x="0.0" y="0.0" width="67" height="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
-                                                    <color key="baseForegroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </buttonConfiguration>
-                                            </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9s-rx-5jf" userLabel="Weather">
-                                                <rect key="frame" x="72" y="0.0" width="67" height="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </buttonConfiguration>
-                                            </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ira-nn-MWU" userLabel="Temp">
-                                                <rect key="frame" x="144" y="0.0" width="67" height="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </buttonConfiguration>
-                                            </button>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yut-42-hUK" userLabel="City Result">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
+                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8L-ZM-Jvk" userLabel="Weather Result">
+                                                <rect key="frame" x="126.5" y="0.0" width="121" height="34"/>
+                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocr-Us-lt0" userLabel="Temp Result">
+                                                <rect key="frame" x="252.5" y="0.0" width="121.5" height="34"/>
+                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-RI-sWr" userLabel="Travel Destination Weather Result Stack View">
-                                <rect key="frame" x="20" y="429" width="374" height="0.0"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-RI-sWr" userLabel="Travel Destination Weather Result Stack View">
+                                <rect key="frame" x="20" y="463" width="374" height="34"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="g9C-k1-R7F" userLabel="Travel Destination Weather Result Activity Indicator">
-                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-h1-G1n" userLabel="Travel Destination Weather Result Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-h1-G1n" userLabel="Travel Destination Weather Result Button Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljw-jQ-Xmx" userLabel="Travel Destination City">
-                                                <rect key="frame" x="0.0" y="0.0" width="67" height="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
-                                                    <color key="baseForegroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </buttonConfiguration>
-                                            </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdP-u9-Acb" userLabel="Travel Destination Weather ">
-                                                <rect key="frame" x="72" y="0.0" width="67" height="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </buttonConfiguration>
-                                            </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eH9-1M-44j" userLabel="Travel Destination Temp">
-                                                <rect key="frame" x="144" y="0.0" width="67" height="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </buttonConfiguration>
-                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="glq-sh-Y6k" userLabel="Travel Destination City Result">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
+                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHW-Em-XyC" userLabel="Travel Destination Weather Result">
+                                                <rect key="frame" x="126.5" y="0.0" width="121" height="34"/>
+                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVM-Io-aG1" userLabel="Travel Destination Temp Result">
+                                                <rect key="frame" x="252.5" y="0.0" width="121.5" height="34"/>
+                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -398,19 +392,19 @@
                     <tabBarItem key="tabBarItem" title="Weather" image="Weather" id="4e9-BZ-EuN"/>
                     <connections>
                         <outlet property="travelCityTextField" destination="b9E-5Z-5Ds" id="EbR-be-H54"/>
+                        <outlet property="travelDestinationResultName" destination="glq-sh-Y6k" id="itG-WI-uH5"/>
+                        <outlet property="travelDestinationResultTemp" destination="SVM-Io-aG1" id="3W1-BS-1mg"/>
+                        <outlet property="travelDestinationResultWeather" destination="gHW-Em-XyC" id="qfY-CY-GVx"/>
                         <outlet property="travelDestinationWeatherResultButtonStackView" destination="g9y-h1-G1n" id="RPZ-Zd-OgC"/>
                         <outlet property="travelDestinationWeatherResultLoader" destination="g9C-k1-R7F" id="pJz-P8-4bJ"/>
-                        <outlet property="travelDestinationWeatherResultName" destination="Ljw-jQ-Xmx" id="k76-Km-cza"/>
                         <outlet property="travelDestinationWeatherResultStackView" destination="8NG-RI-sWr" id="0VM-95-sXH"/>
-                        <outlet property="travelDestinationWeatherResultTemp" destination="eH9-1M-44j" id="p7o-KB-Qwf"/>
-                        <outlet property="travelDestinationWeatherResultWeather" destination="gdP-u9-Acb" id="S2h-dq-2kl"/>
+                        <outlet property="yourCityResultName" destination="yut-42-hUK" id="RqV-z4-vqi"/>
+                        <outlet property="yourCityResultTemp" destination="ocr-Us-lt0" id="We0-Mx-Cnu"/>
+                        <outlet property="yourCityResultWeather" destination="b8L-ZM-Jvk" id="A8U-Vy-cIJ"/>
                         <outlet property="yourCityTextField" destination="5ZW-Sp-eWM" id="d6X-6N-sAn"/>
                         <outlet property="yourCityWeatherResultButtonStackView" destination="vaz-eC-08u" id="4bl-kn-3eA"/>
                         <outlet property="yourCityWeatherResultLoader" destination="TLV-wa-fWd" id="WKJ-Jx-NXd"/>
-                        <outlet property="yourCityWeatherResultName" destination="biz-fr-DXw" id="ND5-Hh-QwU"/>
                         <outlet property="yourCityWeatherResultStackView" destination="AZL-Ey-Q9r" id="rs1-sR-VwR"/>
-                        <outlet property="yourCityWeatherResultTemp" destination="Ira-nn-MWU" id="cSH-oN-RPt"/>
-                        <outlet property="yourCityWeatherResultWeather" destination="Z9s-rx-5jf" id="tGt-t6-Lza"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbC-Ty-ytP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
