@@ -17,12 +17,16 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var resultField: UIView!
+    @IBOutlet weak var resultLoader: UIActivityIndicatorView!
+    @IBOutlet weak var resultStackView: UIStackView!
     
     private var allElements: [UIView] = []
     private var menuSymbols: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.firstCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
+        self.secondCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
         self.setUpView()
         
         CurrenciesService.shared.getSymbols { [weak self] success, symbols in
@@ -48,6 +52,7 @@ class ExchangeViewController: UIViewController {
     }
     
     @IBAction func getConvertionResult(_ sender: Any) {
+        self.resultLoader.isHidden = false
         amountTextField.resignFirstResponder()
         getResultButton.isEnabled = false
         if let first = firstCurrencyButton.currentTitle?.prefix(3),
@@ -55,6 +60,8 @@ class ExchangeViewController: UIViewController {
            let amt = amountTextField.text {
             CurrenciesService.shared.convert(from: String(first), to: String(second), amount: amt) { [weak self] success, amountConverted in
                 DispatchQueue.main.async {
+                    self?.resultLoader.isHidden = true
+                    self?.resultStackView.isHidden = false
                     self?.getResultButton.isEnabled = true
                     guard let amount = amountConverted else {
                         return
