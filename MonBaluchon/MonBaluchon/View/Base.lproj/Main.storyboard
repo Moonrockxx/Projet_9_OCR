@@ -26,20 +26,20 @@
                                 <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="wD6-gs-1kS" userLabel="Container">
-                                <rect key="frame" x="20" y="116" width="374" height="677"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wD6-gs-1kS" userLabel="Container">
+                                <rect key="frame" x="20" y="150" width="374" height="351.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ycj-1c-GIa" userLabel="Language Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="174.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ycj-1c-GIa" userLabel="Language Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="151"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the languages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-C3-Jmn">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="49"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UZY-ra-xbb" userLabel="Language Select Stack View">
-                                                <rect key="frame" x="0.0" y="54" width="374" height="120.5"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="374" height="120.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ADe-Ar-Zwe">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -91,17 +91,17 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5z7-dR-cgY" userLabel="TextField Stack View">
-                                        <rect key="frame" x="0.0" y="187.5" width="374" height="204"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5z7-dR-cgY" userLabel="TextField Stack View">
+                                        <rect key="frame" x="0.0" y="171" width="374" height="180.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text to translate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOn-Ho-myd">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="54"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your text to translate" translatesAutoresizingMaskIntoConstraints="NO" id="W9n-LJ-yVo">
-                                                <rect key="frame" x="0.0" y="54" width="374" height="150"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="374" height="150"/>
                                                 <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="bJz-ku-yuO"/>
@@ -115,17 +115,21 @@
                                             </textView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Q5r-Rx-IQi" userLabel="Translated Text Stack View">
-                                        <rect key="frame" x="0.0" y="404.5" width="374" height="209.5"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2BF-Ry-p0B">
+                                        <rect key="frame" x="0.0" y="351.5" width="374" height="0.0"/>
+                                        <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q5r-Rx-IQi" userLabel="Translated Text Stack View">
+                                        <rect key="frame" x="0.0" y="351.5" width="374" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translated text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfO-pc-WJt" userLabel="Translated text">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="54.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-SV-J3w">
-                                                <rect key="frame" x="0.0" y="59.5" width="374" height="150"/>
+                                                <rect key="frame" x="0.0" y="10" width="374" height="150"/>
                                                 <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="Ouc-bN-NCx"/>
@@ -136,37 +140,46 @@
                                             </textView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfI-L1-UST">
-                                        <rect key="frame" x="0.0" y="627" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="s3P-BL-MGM"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Translate">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
-                                            <color key="baseForegroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="baseBackgroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="translateText:" destination="zY9-y0-LPA" eventType="touchUpInside" id="Z7n-jt-rKb"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfI-L1-UST">
+                                <rect key="frame" x="20" y="743" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="s3P-BL-MGM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Translate">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                                    <color key="baseForegroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="translateText:" destination="zY9-y0-LPA" eventType="touchUpInside" id="Z7n-jt-rKb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xHV-ox-6OF"/>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.2196078431372549" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="NfI-L1-UST" secondAttribute="trailing" constant="20" id="J5a-9C-uqf"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="bottom" secondItem="wD6-gs-1kS" secondAttribute="bottom" constant="20" id="Mpn-f5-doX"/>
                             <constraint firstItem="wD6-gs-1kS" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="OXL-ec-4ji"/>
+                            <constraint firstItem="wD6-gs-1kS" firstAttribute="top" secondItem="qex-kY-EJE" secondAttribute="bottom" constant="20" id="Qsf-9O-ULN"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qex-kY-EJE" secondAttribute="trailing" constant="138" id="R2E-h6-wmu"/>
+                            <constraint firstItem="NfI-L1-UST" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="TGZ-8T-Vwl"/>
                             <constraint firstItem="qex-kY-EJE" firstAttribute="top" secondItem="xHV-ox-6OF" secondAttribute="top" constant="50" id="YDd-Xn-T4K"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="wD6-gs-1kS" secondAttribute="trailing" constant="20" id="avi-1H-q4K"/>
                             <constraint firstItem="Z9H-6z-WpA" firstAttribute="centerY" secondItem="xHV-ox-6OF" secondAttribute="centerY" id="eYU-l0-oDC"/>
                             <constraint firstItem="Z9H-6z-WpA" firstAttribute="centerX" secondItem="xHV-ox-6OF" secondAttribute="centerX" id="l0u-0b-Bgt"/>
+                            <constraint firstItem="xHV-ox-6OF" firstAttribute="bottom" secondItem="NfI-L1-UST" secondAttribute="bottom" constant="20" id="uJu-vs-zvB"/>
                             <constraint firstItem="qex-kY-EJE" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="xCp-35-jGY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Mpn-f5-doX"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Sji-04-NRm" appends="YES" id="5jb-k6-JTl"/>
                         </connections>
@@ -177,8 +190,10 @@
                         <outlet property="firstLanguagePicker" destination="ADe-Ar-Zwe" id="BwY-dl-aK1"/>
                         <outlet property="getTranslationButton" destination="NfI-L1-UST" id="r9f-L9-4rV"/>
                         <outlet property="loader" destination="Z9H-6z-WpA" id="R9D-LU-0uA"/>
+                        <outlet property="resultLoader" destination="2BF-Ry-p0B" id="ANH-fU-dFn"/>
                         <outlet property="secondLanguagePicker" destination="Szt-2k-VwV" id="DEf-Wv-h3r"/>
                         <outlet property="textfieldForTranslate" destination="W9n-LJ-yVo" id="hlA-mu-Wcb"/>
+                        <outlet property="translatedTextStackView" destination="Q5r-Rx-IQi" id="K61-CN-U0r"/>
                         <outlet property="translatedTextfield" destination="zyT-SV-J3w" id="U9O-F1-fg4"/>
                     </connections>
                 </viewController>

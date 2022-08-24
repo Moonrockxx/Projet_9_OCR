@@ -16,6 +16,8 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textfieldForTranslate: UITextView!
     @IBOutlet weak var translatedTextfield: UITextView!
     @IBOutlet weak var getTranslationButton: UIButton!
+    @IBOutlet weak var translatedTextStackView: UIStackView!
+    @IBOutlet weak var resultLoader: UIActivityIndicatorView!
     
     private var allElements: [UIView] = []
     private var menuLanguages: [String] = []
@@ -45,6 +47,7 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func translateText(_ sender: Any) {
+        self.resultLoader.isHidden = false
         getTranslationButton.isEnabled = false
         if let from = firstLanguagePicker.currentTitle?.prefix(2),
            let to = secondLanguagePicker.currentTitle?.prefix(2),
@@ -55,6 +58,8 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
+                    self?.resultLoader.isHidden = true
+                    self?.translatedTextStackView.isHidden = false
                     self?.getTranslationButton.isEnabled = true
                     self?.translatedTextfield.text = text.data.translations.first?.translatedText
                 }
