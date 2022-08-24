@@ -295,18 +295,18 @@
                                     <action selector="getWeather:" destination="gJ1-Fm-GKA" eventType="touchUpInside" id="oTx-1o-p9c"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-Ey-Q9r" userLabel="Your City Weather Result StackView">
-                                <rect key="frame" x="20" y="404" width="374" height="31"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-Ey-Q9r" userLabel="Your City Weather Result StackView">
+                                <rect key="frame" x="20" y="404" width="374" height="0.0"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TLV-wa-fWd" userLabel="Your City Weather Result Activity Indicator">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-eC-08u" userLabel="Your City Weather Result Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-eC-08u" userLabel="Your City Weather Result Button Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biz-fr-DXw" userLabel="City">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
                                                     <color key="baseForegroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -314,7 +314,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9s-rx-5jf" userLabel="Weather">
-                                                <rect key="frame" x="124" y="0.0" width="118.5" height="31"/>
+                                                <rect key="frame" x="72" y="0.0" width="67" height="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -322,7 +322,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ira-nn-MWU" userLabel="Temp">
-                                                <rect key="frame" x="247.5" y="0.0" width="126.5" height="31"/>
+                                                <rect key="frame" x="144" y="0.0" width="67" height="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -333,18 +333,18 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-RI-sWr" userLabel="Travel Destination Weather Result Stack View">
-                                <rect key="frame" x="20" y="460" width="374" height="31"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-RI-sWr" userLabel="Travel Destination Weather Result Stack View">
+                                <rect key="frame" x="20" y="429" width="374" height="0.0"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="g9C-k1-R7F" userLabel="Travel Destination Weather Result Activity Indicator">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-h1-G1n" userLabel="Travel Destination Weather Result Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-h1-G1n" userLabel="Travel Destination Weather Result Button Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljw-jQ-Xmx" userLabel="Travel Destination City">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
                                                     <color key="baseForegroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -352,7 +352,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdP-u9-Acb" userLabel="Travel Destination Weather ">
-                                                <rect key="frame" x="124" y="0.0" width="118.5" height="31"/>
+                                                <rect key="frame" x="72" y="0.0" width="67" height="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -360,7 +360,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eH9-1M-44j" userLabel="Travel Destination Temp">
-                                                <rect key="frame" x="247.5" y="0.0" width="126.5" height="31"/>
+                                                <rect key="frame" x="144" y="0.0" width="67" height="0.0"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button" titleAlignment="leading">
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

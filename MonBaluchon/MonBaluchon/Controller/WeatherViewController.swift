@@ -41,46 +41,52 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func getWeather(_ sender: UIButton) {
-        self.yourCityWeatherResultStackView.isHidden = false
-        self.yourCityWeatherResultButtonStackView.isHidden = true
-        self.yourCityWeatherResultLoader.isHidden = false
-        
-        self.travelDestinationWeatherResultStackView.isHidden = false
-        self.travelDestinationWeatherResultButtonStackView.isHidden = true
-        self.travelDestinationWeatherResultLoader.isHidden = false
-        
-        if let yourCity = yourCityTextField.text {
-            self.weatherService.getWeather(city: yourCity) { [weak self] success, weather in
-                if success {
-                    DispatchQueue.main.async {
-                        if let weather = weather {
-                            self?.yourCityWeatherResultLoader.isHidden = true
-                            self?.yourCityWeatherResultButtonStackView.isHidden = false
-                            self?.yourCityWeatherResultName.titleLabel?.text = self?.yourCityTextField.text
-                            self?.yourCityWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
-                            self?.yourCityWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+        if !self.yourCityTextField.hasText {
+            self.presentAlert(with: "Please enter your city !")
+        } else if !self.travelCityTextField.hasText {
+            self.presentAlert(with: "Please enter your travel destination")
+        } else {
+            self.yourCityWeatherResultStackView.isHidden = false
+            self.yourCityWeatherResultButtonStackView.isHidden = true
+            self.yourCityWeatherResultLoader.isHidden = false
+            
+            self.travelDestinationWeatherResultStackView.isHidden = false
+            self.travelDestinationWeatherResultButtonStackView.isHidden = true
+            self.travelDestinationWeatherResultLoader.isHidden = false
+            
+            if let yourCity = yourCityTextField.text {
+                self.weatherService.getWeather(city: yourCity) { [weak self] success, weather in
+                    if success {
+                        DispatchQueue.main.async {
+                            if let weather = weather {
+                                self?.yourCityWeatherResultLoader.isHidden = true
+                                self?.yourCityWeatherResultButtonStackView.isHidden = false
+                                self?.yourCityWeatherResultName.titleLabel?.text = self?.yourCityTextField.text
+                                self?.yourCityWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                                self?.yourCityWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                            }
                         }
+                    } else {
+                        self?.hideAllResults()
                     }
-                } else {
-                    self?.hideAllResults()
+                    
                 }
-                
             }
-        }
-        if let travelCity = travelCityTextField.text {
-            self.weatherService.getWeather(city: travelCity) { [weak self] success, weather in
-                if success {
-                    DispatchQueue.main.async {
-                        if let weather = weather {
-                            self?.travelDestinationWeatherResultLoader.isHidden = true
-                            self?.travelDestinationWeatherResultButtonStackView.isHidden = false
-                            self?.travelDestinationWeatherResultName.titleLabel?.text = self?.travelCityTextField.text
-                            self?.travelDestinationWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
-                            self?.travelDestinationWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+            if let travelCity = travelCityTextField.text {
+                self.weatherService.getWeather(city: travelCity) { [weak self] success, weather in
+                    if success {
+                        DispatchQueue.main.async {
+                            if let weather = weather {
+                                self?.travelDestinationWeatherResultLoader.isHidden = true
+                                self?.travelDestinationWeatherResultButtonStackView.isHidden = false
+                                self?.travelDestinationWeatherResultName.titleLabel?.text = self?.travelCityTextField.text
+                                self?.travelDestinationWeatherResultTemp.titleLabel?.text = "\(self?.toCelsius(weather.main.temp) ?? 0)°C"
+                                self?.travelDestinationWeatherResultWeather.titleLabel?.text = weather.weather.first?.weatherDescription.capitalized
+                            }
                         }
+                    } else {
+                        self?.hideAllResults()
                     }
-                } else {
-                    self?.hideAllResults()
                 }
             }
         }
