@@ -295,72 +295,82 @@
                                     <action selector="getWeather:" destination="gJ1-Fm-GKA" eventType="touchUpInside" id="oTx-1o-p9c"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-Ey-Q9r" userLabel="Your City Weather Result StackView">
-                                <rect key="frame" x="20" y="404" width="374" height="34"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-Ey-Q9r" userLabel="Your City Weather Result StackView">
+                                <rect key="frame" x="20" y="404" width="374" height="0.0"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TLV-wa-fWd" userLabel="Your City Weather Result Activity Indicator">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-eC-08u" userLabel="Your City Weather Result Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vaz-eC-08u" userLabel="Your City Weather Result Button Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="5"/>
                                         <subviews>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yut-42-hUK" userLabel="City Result">
-                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="33" height="0.0"/>
                                                 <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8L-ZM-Jvk" userLabel="Weather Result">
-                                                <rect key="frame" x="126.5" y="0.0" width="121" height="34"/>
-                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocr-Us-lt0" userLabel="Temp Result">
-                                                <rect key="frame" x="252.5" y="0.0" width="121.5" height="34"/>
-                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="isP-sx-C46">
+                                                <rect key="frame" x="0.0" y="5" width="33" height="0.0"/>
+                                                <subviews>
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8L-ZM-Jvk" userLabel="Weather Result">
+                                                        <rect key="frame" x="0.0" y="0.0" width="14" height="0.0"/>
+                                                        <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocr-Us-lt0" userLabel="Temp Result">
+                                                        <rect key="frame" x="19" y="0.0" width="14" height="0.0"/>
+                                                        <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-RI-sWr" userLabel="Travel Destination Weather Result Stack View">
-                                <rect key="frame" x="20" y="463" width="374" height="34"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-RI-sWr" userLabel="Travel Destination Weather Result Stack View">
+                                <rect key="frame" x="20" y="429" width="374" height="0.0"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="g9C-k1-R7F" userLabel="Travel Destination Weather Result Activity Indicator">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-h1-G1n" userLabel="Travel Destination Weather Result Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-h1-G1n" userLabel="Travel Destination Weather Result Button Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="5"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="glq-sh-Y6k" userLabel="Travel Destination City Result">
-                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="glq-sh-Y6k" userLabel="Travel Destination City Result">
+                                                <rect key="frame" x="0.0" y="0.0" width="33" height="0.0"/>
                                                 <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHW-Em-XyC" userLabel="Travel Destination Weather Result">
-                                                <rect key="frame" x="126.5" y="0.0" width="121" height="34"/>
-                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVM-Io-aG1" userLabel="Travel Destination Temp Result">
-                                                <rect key="frame" x="252.5" y="0.0" width="121.5" height="34"/>
-                                                <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ci0-pn-CbY">
+                                                <rect key="frame" x="0.0" y="5" width="33" height="0.0"/>
+                                                <subviews>
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHW-Em-XyC" userLabel="Travel Destination Weather Result">
+                                                        <rect key="frame" x="0.0" y="0.0" width="14" height="0.0"/>
+                                                        <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVM-Io-aG1" userLabel="Travel Destination Temp Result">
+                                                        <rect key="frame" x="19" y="0.0" width="14" height="0.0"/>
+                                                        <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
