@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +20,16 @@
                                 <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translation Helper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qex-kY-EJE">
-                                <rect key="frame" x="20" y="94" width="256" height="36"/>
+                                <rect key="frame" x="20" y="94" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wD6-gs-1kS" userLabel="Container">
-                                <rect key="frame" x="20" y="150" width="374" height="351.5"/>
+                                <rect key="frame" x="20" y="160" width="374" height="350.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ycj-1c-GIa" userLabel="Language Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="151"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the languages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-C3-Jmn">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -39,60 +38,54 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UZY-ra-xbb" userLabel="Language Select Stack View">
-                                                <rect key="frame" x="0.0" y="30.5" width="374" height="120.5"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="374" height="119.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ADe-Ar-Zwe">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alF-y2-iHT">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
-                                                        <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="qCJ-yB-Nck"/>
+                                                            <constraint firstAttribute="height" constant="40" id="TWb-NG-y2p"/>
                                                         </constraints>
-                                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <menu key="menu" id="fBU-zw-YP9">
-                                                            <children>
-                                                                <command title="Item 1" id="2KT-9i-DWA"/>
-                                                                <command title="Item 2" id="TS4-uR-dLn"/>
-                                                            </children>
-                                                        </menu>
-                                                        <state key="normal" title="Language">
-                                                            <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Select your language">
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="showTopLanguageList:" destination="zY9-y0-LPA" eventType="touchUpInside" id="n9f-hd-wBN"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjv-yx-wyC">
-                                                        <rect key="frame" x="175.5" y="45" width="23.5" height="30.5"/>
+                                                        <rect key="frame" x="175.5" y="45" width="23.5" height="29.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szt-2k-VwV">
-                                                        <rect key="frame" x="0.0" y="80.5" width="374" height="40"/>
-                                                        <color key="backgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgG-3d-Fid">
+                                                        <rect key="frame" x="0.0" y="79.5" width="374" height="40"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="xuZ-dO-iy4"/>
+                                                            <constraint firstAttribute="height" constant="40" id="r4K-u7-PzA"/>
                                                         </constraints>
-                                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <menu key="menu" id="Le2-m4-gqy">
-                                                            <children>
-                                                                <command title="Item 1" id="xUm-bD-tsh"/>
-                                                                <command title="Item 2" id="VnO-k1-YHF"/>
-                                                            </children>
-                                                        </menu>
-                                                        <state key="normal" title="Language">
-                                                            <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Select the target language">
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="baseBackgroundColor" red="0.2274509804" green="0.2784313725" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="showBottomLanguageList:" destination="zY9-y0-LPA" eventType="touchUpInside" id="wo1-P7-ZxF"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Szt-2k-VwV" secondAttribute="trailing" id="26U-fs-u3j"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ADe-Ar-Zwe" secondAttribute="trailing" id="XhA-if-ir4"/>
-                                                    <constraint firstItem="Szt-2k-VwV" firstAttribute="leading" secondItem="UZY-ra-xbb" secondAttribute="leading" id="fbg-Pn-kLw"/>
-                                                    <constraint firstItem="ADe-Ar-Zwe" firstAttribute="leading" secondItem="UZY-ra-xbb" secondAttribute="leading" id="mAH-Uc-ees"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cgG-3d-Fid" secondAttribute="trailing" id="0UC-Dm-5u0"/>
+                                                    <constraint firstItem="cgG-3d-Fid" firstAttribute="leading" secondItem="UZY-ra-xbb" secondAttribute="leading" id="D2S-fy-wdf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="alF-y2-iHT" secondAttribute="trailing" id="csV-Uk-50W"/>
+                                                    <constraint firstItem="alF-y2-iHT" firstAttribute="leading" secondItem="UZY-ra-xbb" secondAttribute="leading" id="q3D-oh-dAX"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5z7-dR-cgY" userLabel="TextField Stack View">
-                                        <rect key="frame" x="0.0" y="171" width="374" height="180.5"/>
+                                        <rect key="frame" x="0.0" y="170" width="374" height="180.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text to translate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOn-Ho-myd">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -116,11 +109,11 @@
                                         </subviews>
                                     </stackView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2BF-Ry-p0B">
-                                        <rect key="frame" x="0.0" y="351.5" width="374" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="350.5" width="374" height="0.0"/>
                                         <color key="color" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q5r-Rx-IQi" userLabel="Translated Text Stack View">
-                                        <rect key="frame" x="0.0" y="351.5" width="374" height="160"/>
+                                        <rect key="frame" x="0.0" y="350.5" width="374" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translated text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfO-pc-WJt" userLabel="Translated text">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
@@ -165,11 +158,11 @@
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="NfI-L1-UST" secondAttribute="trailing" constant="20" id="J5a-9C-uqf"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="bottom" secondItem="wD6-gs-1kS" secondAttribute="bottom" constant="20" id="Mpn-f5-doX"/>
                             <constraint firstItem="wD6-gs-1kS" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="OXL-ec-4ji"/>
-                            <constraint firstItem="wD6-gs-1kS" firstAttribute="top" secondItem="qex-kY-EJE" secondAttribute="bottom" constant="20" id="Qsf-9O-ULN"/>
-                            <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qex-kY-EJE" secondAttribute="trailing" constant="138" id="R2E-h6-wmu"/>
+                            <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="qex-kY-EJE" secondAttribute="trailing" constant="20" id="R2E-h6-wmu"/>
                             <constraint firstItem="NfI-L1-UST" firstAttribute="leading" secondItem="xHV-ox-6OF" secondAttribute="leading" constant="20" id="TGZ-8T-Vwl"/>
                             <constraint firstItem="qex-kY-EJE" firstAttribute="top" secondItem="xHV-ox-6OF" secondAttribute="top" constant="50" id="YDd-Xn-T4K"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="trailing" secondItem="wD6-gs-1kS" secondAttribute="trailing" constant="20" id="avi-1H-q4K"/>
+                            <constraint firstItem="wD6-gs-1kS" firstAttribute="top" secondItem="qex-kY-EJE" secondAttribute="bottom" constant="30" id="dFa-yj-PiX"/>
                             <constraint firstItem="Z9H-6z-WpA" firstAttribute="centerY" secondItem="xHV-ox-6OF" secondAttribute="centerY" id="eYU-l0-oDC"/>
                             <constraint firstItem="Z9H-6z-WpA" firstAttribute="centerX" secondItem="xHV-ox-6OF" secondAttribute="centerX" id="l0u-0b-Bgt"/>
                             <constraint firstItem="xHV-ox-6OF" firstAttribute="bottom" secondItem="NfI-L1-UST" secondAttribute="bottom" constant="20" id="uJu-vs-zvB"/>
@@ -186,13 +179,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" image="Translate" id="qt9-ng-Z4T"/>
                     <connections>
+                        <outlet property="bottomLanguagePicker" destination="cgG-3d-Fid" id="pFa-l8-lwR"/>
                         <outlet property="containerView" destination="wD6-gs-1kS" id="TB0-Vq-xyS"/>
-                        <outlet property="firstLanguagePicker" destination="ADe-Ar-Zwe" id="BwY-dl-aK1"/>
                         <outlet property="getTranslationButton" destination="NfI-L1-UST" id="r9f-L9-4rV"/>
                         <outlet property="loader" destination="Z9H-6z-WpA" id="R9D-LU-0uA"/>
                         <outlet property="resultLoader" destination="2BF-Ry-p0B" id="ANH-fU-dFn"/>
-                        <outlet property="secondLanguagePicker" destination="Szt-2k-VwV" id="DEf-Wv-h3r"/>
                         <outlet property="textfieldForTranslate" destination="W9n-LJ-yVo" id="hlA-mu-Wcb"/>
+                        <outlet property="topLanguagePicker" destination="alF-y2-iHT" id="SEJ-nS-bSM"/>
                         <outlet property="translatedTextStackView" destination="Q5r-Rx-IQi" id="K61-CN-U0r"/>
                         <outlet property="translatedTextfield" destination="zyT-SV-J3w" id="U9O-F1-fg4"/>
                     </connections>
