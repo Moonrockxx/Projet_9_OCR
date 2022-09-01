@@ -70,9 +70,11 @@ class WeatherViewController: UIViewController {
                             }
                         }
                     } else {
-                        self?.hideAllResults()
+                        DispatchQueue.main.async {
+                            self?.hideAllResults()
+                            self?.presentAlert(with: "Can't get your city's weather")
+                        }
                     }
-                    
                 }
             }
             if let travelCity = travelCityTextField.text {
@@ -88,7 +90,10 @@ class WeatherViewController: UIViewController {
                             }
                         }
                     } else {
-                        self?.hideAllResults()
+                        DispatchQueue.main.async {
+                            self?.hideAllResults()
+                            self?.presentAlert(with: "Can't get your travel destination's weather")
+                        }
                     }
                 }
             }

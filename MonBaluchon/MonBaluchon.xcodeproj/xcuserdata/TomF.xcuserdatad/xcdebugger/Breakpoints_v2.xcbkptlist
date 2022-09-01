@@ -5,22 +5,6 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E3129C8F-AE20-4470-8C1B-9AC635C92187"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MonBaluchon/Controller/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "setUpView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
             uuid = "4217FDA1-1C76-443B-8A8B-DE242A1C7780"
@@ -47,6 +31,54 @@
                   moduleName = "UIKitCore"
                   usesParentBreakpointCondition = "Yes"
                   offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6AD0CDB-CD8D-4FCA-908E-65B186B270A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MonBaluchonTests/MonBaluchonTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "testURLWithNoComponentsReturnEmptyURL()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6AD0CDB-CD8D-4FCA-908E-65B186B270A8 - 200dba0d9ad516d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MonBaluchonTests.MonBaluchonTests.testURLWithNoComponentsReturnEmptyURL() -&gt; ()"
+                  moduleName = "MonBaluchonTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P9_Thomas_Ferre%CC%81_062022/Projet_9_OCR/MonBaluchon/MonBaluchonTests/MonBaluchonTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "B6AD0CDB-CD8D-4FCA-908E-65B186B270A8 - 200dba0d9ad516d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MonBaluchonTests.MonBaluchonTests.testURLWithNoComponentsReturnEmptyURL() -&gt; ()"
+                  moduleName = "MonBaluchonTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TomF/Desktop/OCR.nosync/OCR/P9_Thomas_Ferre%CC%81_062022/Projet_9_OCR/MonBaluchon/MonBaluchonTests/MonBaluchonTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "596">
                </Location>
             </Locations>
          </BreakpointContent>

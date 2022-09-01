@@ -10,6 +10,13 @@ import XCTest
 
 class MonBaluchonTests: XCTestCase {
     // MARK: WeatherService
+    // URL Builder return empty URL
+//    func testURLWithNoComponentsReturnEmptyURL() {
+//        let weatherService = WeatherService()
+//        let londonURL = weatherService.buildGetWeatherUrl(path: "data/2.5/weather", city: "london")
+//        XCTAssertNil(londonURL)
+//    }
+    
     // API Call return an error
     func testGetWeatherShouldPostFailedCallbackIfError() {
         let weatherService = WeatherService(weatherSession: URLSessionFake(data: nil, response: nil, error: FakeWheatherResponseData.error))

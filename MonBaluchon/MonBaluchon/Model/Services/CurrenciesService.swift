@@ -30,7 +30,6 @@ class CurrenciesService {
         }
         request.addValue(apiKey, forHTTPHeaderField: "apikey")
         
-//        let session = URLSession(configuration: .default)
         task?.cancel()
         task = currenciesSession.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
@@ -68,8 +67,6 @@ class CurrenciesService {
             return
         }
         request.addValue(apiKey, forHTTPHeaderField: "apikey")
-        
-//        let session = URLSession(configuration: .default)
         
         task?.cancel()
         task = currenciesSession.dataTask(with: request) { data, response, error in

@@ -25,8 +25,6 @@ class ExchangeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.firstCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
-        self.secondCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
         self.setUpView()
         
         CurrenciesService.shared.getSymbols { [weak self] success, symbols in
@@ -38,11 +36,17 @@ class ExchangeViewController: UIViewController {
                 self?.menuSymbols.append("\(symbol.key) : \(symbol.value)")
             }
             
-            DispatchQueue.main.async {
-                self?.firstCurrencyButton.menu = self?.createFilteringMenu()
-                self?.secondCurrencyButton.menu = self?.createFilteringMenu()
-                self?.activityIndicator.isHidden = true
-                self?.containerView.isHidden = false
+            if success {
+                DispatchQueue.main.async {
+                    self?.firstCurrencyButton.menu = self?.createFilteringMenu()
+                    self?.secondCurrencyButton.menu = self?.createFilteringMenu()
+                    self?.activityIndicator.isHidden = true
+                    self?.containerView.isHidden = false
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.presentAlert(with: "Can't get the symbols list")
+                }
             }
         }
     }
@@ -59,14 +63,20 @@ class ExchangeViewController: UIViewController {
            let second = secondCurrencyButton.currentTitle?.prefix(3),
            let amt = amountTextField.text {
             CurrenciesService.shared.convert(from: String(first), to: String(second), amount: amt) { [weak self] success, amountConverted in
-                DispatchQueue.main.async {
-                    self?.resultLoader.isHidden = true
-                    self?.resultStackView.isHidden = false
-                    self?.getResultButton.isEnabled = true
-                    guard let amount = amountConverted else {
-                        return
+                if success {
+                    DispatchQueue.main.async {
+                        self?.resultLoader.isHidden = true
+                        self?.resultStackView.isHidden = false
+                        self?.getResultButton.isEnabled = true
+                        guard let amount = amountConverted else {
+                            return
+                        }
+                        self?.resultLabel.text = String(format: "%.2f", amount.result)
                     }
-                    self?.resultLabel.text = String(format: "%.2f", amount.result)
+                } else {
+                    DispatchQueue.main.async {
+                        self?.presentAlert(with: "Can't make the convertion")
+                    }
                 }
             }
         }

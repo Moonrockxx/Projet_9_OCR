@@ -37,11 +37,17 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                 self?.menuLanguages.append("\(lang.language): \(lang.name)")
             }
             
-            DispatchQueue.main.async {
-                self?.firstLanguagePicker.menu = self?.createFilteringMenu()
-                self?.secondLanguagePicker.menu = self?.createFilteringMenu()
-                self?.loader.isHidden = true
-                self?.containerView.isHidden = false
+            if success {
+                DispatchQueue.main.async {
+                    self?.firstLanguagePicker.menu = self?.createFilteringMenu()
+                    self?.secondLanguagePicker.menu = self?.createFilteringMenu()
+                    self?.loader.isHidden = true
+                    self?.containerView.isHidden = false
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.presentAlert(with: "Can't get the languages list")
+                }
             }
         }
     }
@@ -57,11 +63,17 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                     return
                 }
                 
-                DispatchQueue.main.async {
-                    self?.resultLoader.isHidden = true
-                    self?.translatedTextStackView.isHidden = false
-                    self?.getTranslationButton.isEnabled = true
-                    self?.translatedTextfield.text = text.data.translations.first?.translatedText
+                if success {
+                    DispatchQueue.main.async {
+                        self?.resultLoader.isHidden = true
+                        self?.translatedTextStackView.isHidden = false
+                        self?.getTranslationButton.isEnabled = true
+                        self?.translatedTextfield.text = text.data.translations.first?.translatedText
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.presentAlert(with: "Can't translate your text")
+                    }
                 }
             }
         }
