@@ -45,10 +45,10 @@
             filePath = "MonBaluchonTests/MonBaluchonTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "testURLWithNoComponentsReturnEmptyURL()"
-            landmarkType = "7">
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "MonBaluchonTests"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "B6AD0CDB-CD8D-4FCA-908E-65B186B270A8 - 200dba0d9ad516d6"

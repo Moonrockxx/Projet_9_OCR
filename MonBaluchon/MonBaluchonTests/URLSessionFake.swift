@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS, deprecated: 13.0)
 class URLSessionFake: URLSession {
     var data: Data?
     var response: URLResponse?

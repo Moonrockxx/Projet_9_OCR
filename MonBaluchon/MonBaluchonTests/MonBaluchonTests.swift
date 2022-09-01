@@ -8,6 +8,7 @@
 @testable import MonBaluchon
 import XCTest
 
+@available(iOS, deprecated: 13.0)
 class MonBaluchonTests: XCTestCase {
     // MARK: WeatherService
     // URL Builder return empty URL
