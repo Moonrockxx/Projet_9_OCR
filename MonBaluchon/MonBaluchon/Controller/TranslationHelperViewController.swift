@@ -131,7 +131,9 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
         self.resultLoader.isHidden = false
         getTranslationButton.isEnabled = false
         if let from = topLanguagePicker.currentTitle?.prefix(2),
+           from != "Se",
            let to = bottomLanguagePicker.currentTitle?.prefix(2),
+           to != "Se",
            let txt = textfieldForTranslate.text {
             LanguagesService.shared.getTranslation(from: String(from), to: String(to), text: txt) { [weak self] success, translatedText in
                 guard let text = translatedText else {
@@ -150,6 +152,12 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
                         self?.presentAlert(with: "Can't translate your text")
                     }
                 }
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.presentAlert(with: "Please fill all the fields")
+                self.resultLoader.isHidden = true
+                self.getTranslationButton.isEnabled = true
             }
         }
     }
@@ -185,20 +193,6 @@ class TranslationHelperViewController: UIViewController, UITextViewDelegate {
         
         self.textfieldForTranslate.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
     }
-    
-//    private func createFilteringMenu() -> UIMenu {
-//        var menuActions: [UIAction] = []
-//        let optionsClosure = { (action: UIAction) in
-//            print(action.title)
-//        }
-//        
-//        for languageName in menuLanguages.sorted(by: { $0 < $1 }) where languageName != "" {
-//            let item = UIAction(title: languageName, handler: optionsClosure)
-//            menuActions.append(item)
-//        }
-//        
-//        return UIMenu(title: "Select a language", children: menuActions)
-//    }
 }
 
 extension TranslationHelperViewController: UIPickerViewDelegate, UIPickerViewDataSource {
